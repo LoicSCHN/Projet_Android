@@ -5,6 +5,6 @@ public class Annonce {
     private int id_User;
     private int id_Voiture;
     private int prix;
-    private String localisation;
+    private int id_Localisation;
 
 }
