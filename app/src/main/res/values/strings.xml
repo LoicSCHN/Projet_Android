@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">VenteVehiculeV1</string>
+    <string name="welcome">Welcome to CASL</string>
+    <string name="sign">Signup your account</string>
 </resources>
