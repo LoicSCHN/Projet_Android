@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "757024060174",
+    "project_id": "vente-voiture-ceac9",
+    "storage_bucket": "vente-voiture-ceac9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757024060174:android:5c07df206a15d0d2c79d5f",
+        "android_client_info": {
+          "package_name": "com.example.ventevehiculev1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "757024060174-o49gf65i7i3gia6qgr8clhhnkv901vql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSyOW_1fO9aCViSyInUgy1McdV8aH6nZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "757024060174-o49gf65i7i3gia6qgr8clhhnkv901vql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
