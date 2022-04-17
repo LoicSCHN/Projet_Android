@@ -62,6 +62,8 @@ public class LoginActivity extends AppCompatActivity {
 
                         if(task.isSuccessful())
                         {
+                            //Le Toast ne fonctionne pas//
+                            //Toast.makeText(getApplicationContext(), "Connexion !" +task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             Intent intent =new Intent(LoginActivity.this,MainActivity.class);
                             startActivity(intent);
                             finish();

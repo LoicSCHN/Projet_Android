@@ -3,5 +3,13 @@
     <string name="welcome">Welcome to CASL</string>
     <string name="sign">Signup your account</string>
     <string name="validate">Valider</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile">Profile</string>
+    <string name="search">Search</string>
+    <string name="favoris">Favoris</string>
+    <string name="login">Login</string>
+    <string name="string_login" />
+    <string name="register">Register</string>
 
 </resources>
