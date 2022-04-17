@@ -3,6 +3,8 @@ package com.example.ventevehiculev1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,10 +30,11 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btn_login;
     private Button btn_register;
-    private Button btn_annonce;
-    private EditText edit;
 
     private BottomNavigationView bottomNavigationView;
+
+    private RecyclerView recyclerView;
+    private annonceAdapter adapter;
 
     DatabaseReference databaseAnnonce;
 
@@ -39,10 +43,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        edit = findViewById(R.id.add_annonce);
-        btn_annonce = findViewById(R.id.button_annonce);
         btn_login = findViewById(R.id.button_to_login);
         btn_register = findViewById(R.id.button_to_register);
+
+        databaseAnnonce = FirebaseDatabase.getInstance("https://vente-voiture-ceac9-default-rtdb.europe-west1.firebasedatabase.app").getReference("Annonce");
+
+        recyclerView = findViewById(R.id.recycler1);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        FirebaseRecyclerOptions<Annonce> options = new FirebaseRecyclerOptions.Builder<Annonce>()
+                .setQuery(databaseAnnonce,Annonce.class)
+                .build();
+
+        adapter = new annonceAdapter(options);
+        recyclerView.setAdapter(adapter);
 
 
         //----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -88,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
 
         //----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        databaseAnnonce = FirebaseDatabase.getInstance("https://vente-voiture-ceac9-default-rtdb.europe-west1.firebasedatabase.app").getReference("Annonce");
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,30 +118,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btn_annonce.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addAnnonce();
-            }
-        });
-
     }
 
-    public void addAnnonce(){
-        String title = edit.getText().toString().trim();
-
-        if(!TextUtils.isEmpty(title))
-        {
-            String id = databaseAnnonce.push().getKey();
-            Annonce annonce = new Annonce(id,title);
-            databaseAnnonce.child(id).setValue(annonce);
-            //databaseAnnonce.push();
-            Toast.makeText(this,"Annonce add",Toast.LENGTH_LONG).show();
-        }
-        else
-        {
-            Toast.makeText(this,"Error",Toast.LENGTH_LONG).show();
-        }
+    @Override protected void onStart()
+    {
+        super.onStart();
+        adapter.startListening();
     }
+
+    @Override protected void onStop()
+    {
+        super.onStop();
+        adapter.stopListening();
+    }
+
+
 
 }

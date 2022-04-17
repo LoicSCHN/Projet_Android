@@ -46,7 +46,7 @@ public class addAnnonceActivity extends AppCompatActivity {
         if(!TextUtils.isEmpty(title))
         {
             String id = databaseAnnonce.push().getKey();
-            Annonce annonce = new Annonce(id,title);
+            Annonce annonce = new Annonce(title);
             databaseAnnonce.child(id).setValue(annonce);
             //databaseAnnonce.push();
             Toast.makeText(this,"Annonce add",Toast.LENGTH_LONG).show();

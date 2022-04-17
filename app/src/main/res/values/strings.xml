@@ -8,5 +8,8 @@
     <string name="profile">Profile</string>
     <string name="search">Search</string>
     <string name="favoris">Favoris</string>
+    <string name="login">Login</string>
+    <string name="string_login" />
+    <string name="register">Register</string>
 
 </resources>

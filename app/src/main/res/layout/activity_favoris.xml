@@ -30,4 +30,9 @@
 
         app:layout_constraintVertical_bias="0.997"
         app:menu="@menu/bottom_menu" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
