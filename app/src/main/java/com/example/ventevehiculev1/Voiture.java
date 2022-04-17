@@ -25,4 +25,5 @@ public class Voiture {
         this.puissance = puissance;
         this.CV = CV;
     }
+
 }

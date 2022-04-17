@@ -59,10 +59,12 @@ public class RegisterActivity extends AppCompatActivity {
                 mAuth.createUserWithEmailAndPassword(mail,mdpp).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
+                        if(task.isSuccessful())
+                        {
                             Toast.makeText(getApplicationContext(), "User is created successfuly :D", Toast.LENGTH_SHORT).show();
                             mAuth.signOut();
-                            Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
+                            Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                            startActivity(intent);
                         }
                         else{
                             Toast.makeText(getApplicationContext(), "ERROR !"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
