@@ -15,10 +15,13 @@ public class Annonce {
     public Annonce(String title){
         this.title=title;
     }
+    public Annonce(){
+
+    }
+
     public String getTitle() {
         return title;
     }
-
     public void setTitle(String title) {
         this.title = title;
     }
