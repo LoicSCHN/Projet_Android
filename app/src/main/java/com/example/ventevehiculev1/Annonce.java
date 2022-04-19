@@ -10,19 +10,24 @@ public class Annonce {
     */
     //private String id;
     private String title;
-    //private Voiture voiture;
+    private Voiture voiture;
 
-    public Annonce(String title){
+    public Annonce(String title,Voiture voiture){
         this.title=title;
+        this.voiture = voiture;
     }
     public Annonce(){
 
     }
-
     public String getTitle() {
         return title;
     }
     public void setTitle(String title) {
         this.title = title;
+    }
+    public Voiture getVoiture(){return voiture;}
+
+    public void setVoiture(Voiture voiture) {
+        this.voiture = voiture;
     }
 }

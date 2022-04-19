@@ -16,6 +16,8 @@ public class addAnnonceActivity extends AppCompatActivity {
 
 
     private EditText title_add;
+    private EditText marque_add;
+    private EditText modele_add;
     private Button btn_addannonce;
 
     DatabaseReference databaseAnnonce;
@@ -26,6 +28,9 @@ public class addAnnonceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_annonce);
 
         title_add = findViewById(R.id.addTitletoAnnonce);
+        marque_add = findViewById(R.id.addMarqueToAnnonce);
+        modele_add = findViewById(R.id.addModeleToAnnonce);
+
         btn_addannonce = findViewById(R.id.btn_addannonce);
 
         databaseAnnonce = FirebaseDatabase.getInstance("https://vente-voiture-ceac9-default-rtdb.europe-west1.firebasedatabase.app").getReference("Annonce");
@@ -42,11 +47,14 @@ public class addAnnonceActivity extends AppCompatActivity {
     public void addAnnonce(){
 
         String title = title_add.getText().toString().trim();
+        String marque = marque_add.getText().toString().trim();
+        String modele = modele_add.getText().toString().trim();
 
         if(!TextUtils.isEmpty(title))
         {
             String id = databaseAnnonce.push().getKey();
-            Annonce annonce = new Annonce(title);
+            Voiture voiture = new Voiture(marque,modele);
+            Annonce annonce = new Annonce(title,voiture);
             databaseAnnonce.child(id).setValue(annonce);
             //databaseAnnonce.push();
             Toast.makeText(this,"Annonce add",Toast.LENGTH_LONG).show();

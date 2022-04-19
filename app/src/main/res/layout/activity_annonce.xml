@@ -18,8 +18,12 @@
 
         <TextView
             android:id="@+id/titleannonce"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_width="224dp"
+            android:layout_height="64dp" />
+
+        <TextView
+            android:layout_width="171dp"
+            android:layout_height="37dp" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
