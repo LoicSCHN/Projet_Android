@@ -132,6 +132,4 @@ public class MainActivity extends AppCompatActivity {
         adapter.stopListening();
     }
 
-
-
 }
