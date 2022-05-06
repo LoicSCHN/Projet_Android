@@ -8,14 +8,18 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private Button btn_deposer;
+    private TextView name;
 
 
     @Override
@@ -32,6 +36,14 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        name = findViewById(R.id.nomProfil);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            name.setText(user.getEmail());
+        } else {
+            // No user is signed in
+        }
+
 
         //----------------------------------------------------------------------------------------------------------------------------------------------------------
         // NavBar

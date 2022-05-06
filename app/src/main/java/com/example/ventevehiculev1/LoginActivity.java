@@ -11,13 +11,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity {
+import java.util.Collections;
+import java.util.List;
 
+public class LoginActivity extends AppCompatActivity {
+    private static final int RC_SIGN_IN = 123;
     private Button btnlog;
     private EditText email;
     private EditText mdp;
@@ -26,6 +30,11 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+
+
+
+
         setContentView(R.layout.activity_login);
 
         // Boutton mail and mdp
