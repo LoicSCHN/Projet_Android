@@ -46,4 +46,12 @@
 
         app:layout_constraintVertical_bias="0.997"
         app:menu="@menu/bottom_menu" />
+
+    <Button
+        android:id="@+id/connexion_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="293dp"
+        tools:layout_editor_absoluteY="10dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

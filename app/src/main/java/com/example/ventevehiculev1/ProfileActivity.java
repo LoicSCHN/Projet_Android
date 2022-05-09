@@ -3,6 +3,7 @@ package com.example.ventevehiculev1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Button btn_deposer;
     private TextView name;
+    private Button coDeco;
 
 
     @Override
@@ -28,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         btn_deposer = findViewById(R.id.button_deposer);
+        coDeco = findViewById(R.id.connexion_button);
 
         btn_deposer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,9 +45,21 @@ public class ProfileActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             name.setText(user.getEmail());
+            coDeco.setText("Deconnexion");
+
+            coDeco.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    signOut().addOnSuccessListener(aVoid -> {
+                            finish();
+                        });
+                }
+            });
         } else {
-            // No user is signed in
+            coDeco.setText("Connexion");
         }
+
+
 
 
         //----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -77,7 +94,9 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         //----------------------------------------------------------------------------------------------------------------------------------------------------------
+    }
 
-
+    public Task<Void> signOut(){
+        return AuthUI.getInstance().signOut(this);
     }
 }
