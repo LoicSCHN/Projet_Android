@@ -22,8 +22,8 @@
 
     <TextView
         android:id="@+id/nomProfil"
-        android:layout_width="85dp"
-        android:layout_height="51dp"
+        android:layout_width="242dp"
+        android:layout_height="41dp"
         android:layout_marginEnd="366dp"
         android:layout_marginBottom="648dp"
         android:text="@string/profile"
@@ -51,7 +51,9 @@
         android:id="@+id/connexion_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
         android:text="Button"
-        tools:layout_editor_absoluteX="293dp"
-        tools:layout_editor_absoluteY="10dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

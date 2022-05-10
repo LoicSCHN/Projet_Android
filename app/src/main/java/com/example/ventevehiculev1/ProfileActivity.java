@@ -3,6 +3,7 @@ package com.example.ventevehiculev1;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -44,15 +45,15 @@ public class ProfileActivity extends AppCompatActivity {
         name = findViewById(R.id.nomProfil);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            name.setText(user.getEmail());
+            name.setText(user.getDisplayName());
+
             coDeco.setText("Deconnexion");
 
             coDeco.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    signOut().addOnSuccessListener(aVoid -> {
-                            finish();
-                        });
+                    signOut();
+                    finish();
                 }
             });
         } else {

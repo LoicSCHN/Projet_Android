@@ -1,5 +1,7 @@
 package com.example.ventevehiculev1;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -16,6 +18,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
+import com.firebase.ui.auth.IdpResponse;
+import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,7 +37,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    private static final int RC_SIGN_IN = 123;
     private Button btn_login;
     private Button btn_register;
 
@@ -48,9 +53,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupListeners();
-
+        btn_register = findViewById(R.id.button_to_register);
         bottomNavigationView = findViewById(R.id.BottomNavBar);
         bottomNavigationView.setSelectedItemId(R.id.search);
+
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(MainActivity.this,RegisterActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -110,19 +124,49 @@ public class MainActivity extends AppCompatActivity {
 
         // Choose authentication providers
         List<AuthUI.IdpConfig> providers = Arrays.asList(
-                new AuthUI.IdpConfig.GoogleBuilder().build(),
-                new AuthUI.IdpConfig.EmailBuilder().build());
+                new AuthUI.IdpConfig.EmailBuilder().build(),
+                new AuthUI.IdpConfig.PhoneBuilder().build(),
+                new AuthUI.IdpConfig.GoogleBuilder().build());
 
+        Intent signInIntent = AuthUI.getInstance()
+                .createSignInIntentBuilder()
+                .setAvailableProviders(providers)
+                .build();
+        signInLauncher.launch(signInIntent);
         // Launch the activity
-        startActivity(
+        /*startActivity(
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setTheme(R.style.LoginTheme)
                         .setAvailableProviders(providers)
                         .setIsSmartLockEnabled(false, true)
-                        //.setLogo(R.drawable.ic_logo_auth)
-                        .build()
-        );
+                        .build(),
+                RC_SIGN_IN);
+    */
+    }
+
+    private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
+            new FirebaseAuthUIActivityResultContract(),
+            new ActivityResultCallback<FirebaseAuthUIAuthenticationResult>() {
+                @Override
+                public void onActivityResult(FirebaseAuthUIAuthenticationResult result) {
+                    onSignInResult(result);
+                }
+            }
+    );
+
+    private void onSignInResult(FirebaseAuthUIAuthenticationResult result) {
+        IdpResponse response = result.getIdpResponse();
+        if (result.getResultCode() == RESULT_OK) {
+            // Successfully signed in
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            // ...
+        } else {
+            // Sign in failed. If response is null the user canceled the
+            // sign-in flow using the back button. Otherwise check
+            // response.getError().getErrorCode() and handle the error.
+            // ...
+        }
     }
 
     @Override protected void onStart()
@@ -165,18 +209,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent =new Intent(MainActivity.this,LoginActivity.class);
                 startActivity(intent);
             }
-        });
-        btn_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent =new Intent(MainActivity.this,RegisterActivity.class);
-                startActivity(intent);
+        });*/
 
-            }
-        });
 
-    }
 
-    */
+
+
 
 }
