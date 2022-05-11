@@ -57,14 +57,14 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.BottomNavBar);
         bottomNavigationView.setSelectedItemId(R.id.search);
 
-        btn_register.setOnClickListener(new View.OnClickListener() {
+        /*btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(MainActivity.this,RegisterActivity.class);
                 startActivity(intent);
 
             }
-        });
+        });*/
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override

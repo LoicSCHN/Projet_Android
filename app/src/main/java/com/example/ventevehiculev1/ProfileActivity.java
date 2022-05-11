@@ -100,4 +100,6 @@ public class ProfileActivity extends AppCompatActivity {
     public Task<Void> signOut(){
         return AuthUI.getInstance().signOut(this);
     }
+
+
 }
