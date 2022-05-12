@@ -1,21 +1,18 @@
 package com.example.ventevehiculev1;
 
 public class Voiture {
-    /*private int id;*/
-    // Test //
+
     private String marque;
     private String modele;
-    /*private String categorie;
+    private String categorie;
     private String energie;
-    private double kilometrage;
+    private String kilometrage;
     private String boiteVitesse;
-    private int nbPortes;
-    private int puissance;
-    private int CV;
+    private String nbPortes;
+    private String puissance;
 
+    public Voiture(String marque, String modele, String categorie, String energie, String kilometrage, String boiteVitesse, String nbPortes, String puissance) {
 
-    public Voiture(int id, String marque, String modele, String categorie, String energie, double kilometrage, String boiteVitesse, int nbPortes, int puissance, int CV) {
-        this.id = id;
         this.marque = marque;
         this.modele = modele;
         this.categorie = categorie;
@@ -24,14 +21,9 @@ public class Voiture {
         this.boiteVitesse = boiteVitesse;
         this.nbPortes = nbPortes;
         this.puissance = puissance;
-        this.CV = CV;
-    }*/
-
-    public Voiture(String marque, String modele)
-    {
-        this.marque = marque;
-        this.modele = modele;
     }
+
+
 
     public Voiture(){}
 
@@ -41,6 +33,54 @@ public class Voiture {
 
     public String getModele() {
         return modele;
+    }
+
+    public String getBoiteVitesse() {
+        return boiteVitesse;
+    }
+
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public String getKilometrage() {
+        return kilometrage;
+    }
+
+    public String getEnergie() {
+        return energie;
+    }
+
+    public String getNbPortes() {
+        return nbPortes;
+    }
+
+    public String getPuissance() {
+        return puissance;
+    }
+
+    public void setBoiteVitesse(String boiteVitesse) {
+        this.boiteVitesse = boiteVitesse;
+    }
+
+    public void setKilometrage(String kilometrage) {
+        this.kilometrage = kilometrage;
+    }
+
+    public void setNbPortes(String nbPortes) {
+        this.nbPortes = nbPortes;
+    }
+
+    public void setPuissance(String puissance) {
+        this.puissance = puissance;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+
+    public void setEnergie(String energie) {
+        this.energie = energie;
     }
 
     public void setMarque(String marque) {

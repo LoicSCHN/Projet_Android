@@ -23,6 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private Button btn_deposer;
+    private Button btn_mes_annonces;
     private TextView name;
     private Button coDeco;
 
@@ -33,6 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         btn_deposer = findViewById(R.id.button_deposer);
+        btn_mes_annonces = findViewById(R.id.button_mes_annonces);
         coDeco = findViewById(R.id.connexion_button);
 
         btn_deposer.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +44,15 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btn_mes_annonces.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileActivity.this,MesAnnoncesActivity.class);
+                startActivity(intent);
+            }
+        });
+
         name = findViewById(R.id.nomProfil);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {

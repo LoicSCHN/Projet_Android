@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VenteVehiculeV1">
         <activity
+            android:name=".MesAnnoncesActivity"
+            android:exported="false" />
+        <activity
             android:name=".addAnnonce"
             android:exported="false" />
         <activity
@@ -17,21 +20,19 @@
             android:exported="false" />
         <activity
             android:name=".FavorisActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".addAnnonceActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
