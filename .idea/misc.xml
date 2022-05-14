@@ -4,8 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/activity_add_annonce.xml" value="0.34646739130434784" />
+        <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/activity_annonce.xml" value="0.3482789855072464" />
+        <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/activity_main.xml" value="0.2980072463768116" />
         <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/activity_mes_annonces.xml" value="0.34646739130434784" />
-        <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/activity_profile.xml" value="0.33" />
+        <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/activity_profile.xml" value="0.1" />
+        <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/fragment_favoris.xml" value="0.25" />
+        <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/fragment_home.xml" value="0.34646739130434784" />
+        <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/fragment_profile.xml" value="0.34646739130434784" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_add_annonce.xml" value="0.2552083333333333" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_annonce.xml" value="0.25" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_favoris.xml" value="0.25" />

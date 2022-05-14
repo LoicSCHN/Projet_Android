@@ -76,7 +76,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         //----------------------------------------------------------------------------------------------------------------------------------------------------------
         // NavBar
-
+/*
         bottomNavigationView = findViewById(R.id.BottomNavBar);
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
@@ -104,7 +104,7 @@ public class ProfileActivity extends AppCompatActivity {
                 return false;
             }
         });
-
+*/
         //----------------------------------------------------------------------------------------------------------------------------------------------------------
     }
 

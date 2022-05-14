@@ -10,15 +10,26 @@ public class Annonce {
     */
     //private String id;
     private String title;
+    private String id_proprietaire;
     private Voiture voiture;
 
-    public Annonce(String title,Voiture voiture){
+    public Annonce(String title,String id_proprietaire,Voiture voiture){
         this.title=title;
+        this.id_proprietaire = id_proprietaire;
         this.voiture = voiture;
     }
     public Annonce(){
 
     }
+
+    public String getId_proprietaire() {
+        return id_proprietaire;
+    }
+
+    public void setId_proprietaire(String id_proprietaire) {
+        this.id_proprietaire = id_proprietaire;
+    }
+
     public String getTitle() {
         return title;
     }

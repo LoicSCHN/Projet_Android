@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -71,12 +73,13 @@ public class addAnnonceActivity extends AppCompatActivity {
         String nbp = nbp_add.getText().toString().trim();
         String energie = energie_add.getText().toString().trim();
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         if(!TextUtils.isEmpty(title))
         {
             String id = databaseAnnonce.push().getKey();
             Voiture voiture = new Voiture(marque,modele,categorie,energie,kilometrage,btv,nbp,puissance);
-            Annonce annonce = new Annonce(title,voiture);
+            Annonce annonce = new Annonce(title,user.getUid(),voiture);
             databaseAnnonce.child(id).setValue(annonce);
             //databaseAnnonce.push();
             Toast.makeText(this,"Annonce add",Toast.LENGTH_LONG).show();
