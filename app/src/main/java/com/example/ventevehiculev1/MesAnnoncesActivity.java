@@ -2,81 +2,54 @@ package com.example.ventevehiculev1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
-import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.tasks.Task;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
-public class ProfileActivity extends AppCompatActivity {
+public class MesAnnoncesActivity extends AppCompatActivity {
 
+    DatabaseReference test;
+    private RecyclerView recyclerView;
+    private annonceAdapter adapter;
     private BottomNavigationView bottomNavigationView;
-    private Button btn_deposer;
-    private Button btn_mes_annonces;
-    private TextView name;
-    private Button coDeco;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_mes_annonces);
 
-        btn_deposer = findViewById(R.id.button_deposer);
-        btn_mes_annonces = findViewById(R.id.button_mes_annonces);
-        coDeco = findViewById(R.id.connexion_button);
+        test = FirebaseDatabase.getInstance("https://vente-voiture-ceac9-default-rtdb.europe-west1.firebasedatabase.app").getReference("Annonce");
 
-        btn_deposer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfileActivity.this,addAnnonceActivity.class);
-                startActivity(intent);
-            }
-        });
+        recyclerView = findViewById(R.id.recycler_mes_annonces);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        btn_mes_annonces.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfileActivity.this,MesAnnoncesActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        name = findViewById(R.id.nomProfil);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            name.setText(user.getDisplayName());
+        Query query = test.getDatabase().getReference("Annonce")
+                .orderByChild("id_proprietaire")
+                .equalTo(user.getUid());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        FirebaseRecyclerOptions<Annonce> options = new FirebaseRecyclerOptions.Builder<Annonce>()
+                .setQuery(query,Annonce.class)
+                .build();
 
-            coDeco.setText("Deconnexion");
-
-            coDeco.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    signOut();
-                    finish();
-                }
-            });
-        } else {
-            coDeco.setText("Connexion");
-        }
-
-
-
+        adapter = new annonceAdapter(options);
+        recyclerView.setAdapter(adapter);
 
         //----------------------------------------------------------------------------------------------------------------------------------------------------------
         // NavBar
-/*
+
         bottomNavigationView = findViewById(R.id.BottomNavBar);
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
@@ -104,13 +77,21 @@ public class ProfileActivity extends AppCompatActivity {
                 return false;
             }
         });
-*/
-        //----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    }
+    @Override protected void onStart()
+    {
+        super.onStart();
+        adapter.startListening();
     }
 
-    public Task<Void> signOut(){
-        return AuthUI.getInstance().signOut(this);
+    @Override protected void onStop()
+    {
+        super.onStop();
+        adapter.stopListening();
     }
+
 
 
 }

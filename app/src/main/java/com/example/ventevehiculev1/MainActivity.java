@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,6 +38,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    private Fragment fragment_profile;
+    private Fragment fragment_favoris;
+    private Fragment fragment_home;
+
     private static final int RC_SIGN_IN = 123;
     private Button btn_login;
     private Button btn_register;
@@ -73,19 +80,26 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
 
                     case R.id.search:
+
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         overridePendingTransition(0,0);
+                        replaceCurrentFragmentBy(fragment_home);
                         return true;
 
                     case R.id.profile:
                         startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
                         overridePendingTransition(0,0);
+                        replaceCurrentFragmentBy(fragment_profile);
                         return true;
 
                     case R.id.fav:
+                        /*
                         startActivity(new Intent(getApplicationContext(),FavorisActivity.class));
                         overridePendingTransition(0,0);
+                        */
+                        replaceCurrentFragmentBy(fragment_favoris);
                         return true;
+
                 }
                 return false;
             }
@@ -107,6 +121,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    private void replaceCurrentFragmentBy(Fragment fragment){
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fragment, fragment);
+        ft.commit();
+    }
+
 
     private void setupListeners(){
         // Login Button

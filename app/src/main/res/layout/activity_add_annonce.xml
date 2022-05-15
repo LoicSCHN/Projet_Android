@@ -10,28 +10,29 @@
         android:id="@+id/btn_addannonce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="127dp"
-        android:layout_marginTop="97dp"
-        android:layout_marginEnd="190dp"
-        android:layout_marginBottom="184dp"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="52dp"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addTitletoAnnonce" />
+        app:layout_constraintTop_toBottomOf="@+id/addPuissance" />
 
     <EditText
         android:id="@+id/addTitletoAnnonce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="79dp"
-        android:layout_marginTop="356dp"
-        android:layout_marginEnd="122dp"
-        android:layout_marginBottom="98dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="19dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/btn_addannonce"
+        app:layout_constraintBottom_toTopOf="@+id/addMarqueToAnnonce"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,28 +41,114 @@
         android:id="@+id/addMarqueToAnnonce"
         android:layout_width="218dp"
         android:layout_height="37dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="109dp"
-        android:layout_marginBottom="27dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginBottom="17dp"
+        android:text="Marque"
         app:layout_constraintBottom_toTopOf="@+id/addModeleToAnnonce"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addTitletoAnnonce"
-        android:text="Marque"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/addTitletoAnnonce" />
 
     <EditText
         android:id="@+id/addModeleToAnnonce"
         android:layout_width="223dp"
         android:layout_height="46dp"
-        android:layout_marginStart="84dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.652"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="6dp"
         android:text="Modele"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/addCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addMarqueToAnnonce" />
+
+    <EditText
+        android:id="@+id/addCategory"
+        android:layout_width="223dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="5dp"
+        android:text="Categorie"
+        app:layout_constraintBottom_toTopOf="@+id/addEnergy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addModeleToAnnonce" />
+
+    <EditText
+        android:id="@+id/addEnergy"
+        android:layout_width="223dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="18dp"
+        android:text="Energie"
+        app:layout_constraintBottom_toTopOf="@+id/addKilometrage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addCategory" />
+
+    <EditText
+        android:id="@+id/addPuissance"
+        android:layout_width="223dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="88dp"
+        android:text="Puissance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addDoor" />
+
+    <EditText
+        android:id="@+id/addVitess"
+        android:layout_width="223dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="1dp"
+        android:text="Boite de Vitesse"
+        app:layout_constraintBottom_toTopOf="@+id/addDoor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addKilometrage" />
+
+    <EditText
+        android:id="@+id/addDoor"
+        android:layout_width="223dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="14dp"
+        android:text="Nombre de portes"
+        app:layout_constraintBottom_toTopOf="@+id/addPuissance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addVitess" />
+
+    <EditText
+        android:id="@+id/addKilometrage"
+        android:layout_width="223dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="17dp"
+        android:text="Kilometrage"
+        app:layout_constraintBottom_toTopOf="@+id/addVitess"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addEnergy" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

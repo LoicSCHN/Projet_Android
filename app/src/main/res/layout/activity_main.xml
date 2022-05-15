@@ -7,25 +7,34 @@
     android:background="#2148C0"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button_to_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="104dp"
-        android:text="@string/login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="414dp"
+        android:layout_height="664dp"
+        app:layout_constraintBottom_toTopOf="@+id/BottomNavBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/button_to_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="124dp"
-        android:layout_marginBottom="104dp"
-        android:text="@string/register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_to_login" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler1"
+            android:layout_width="366dp"
+            android:layout_height="608dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="29dp" />
+
+        <Button
+            android:id="@+id/button_to_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+        <Button
+            android:id="@+id/button_to_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+    </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/BottomNavBar"
@@ -39,20 +48,5 @@
 
         app:layout_constraintVertical_bias="0.997"
         app:menu="@menu/bottom_menu" />
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler1"
-        android:layout_width="353dp"
-        android:layout_height="400dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="150dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_to_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
