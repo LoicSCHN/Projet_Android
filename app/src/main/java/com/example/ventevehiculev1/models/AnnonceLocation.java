@@ -1,4 +1,4 @@
-package com.example.ventevehiculev1;
+package com.example.ventevehiculev1.models;
 
 public class AnnonceLocation {
     public int id_Date;

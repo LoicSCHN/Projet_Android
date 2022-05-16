@@ -1,4 +1,4 @@
-package com.example.ventevehiculev1;
+package com.example.ventevehiculev1.models;
 
 public class User {
     private int id;

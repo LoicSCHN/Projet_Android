@@ -1,4 +1,4 @@
-package com.example.ventevehiculev1;
+package com.example.ventevehiculev1.Fragment;
 
 import android.os.Bundle;
 
@@ -8,10 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ventevehiculev1.R;
 
-public class ProfileFragment extends Fragment {
 
-    public ProfileFragment(){
+public class FavorisFragment extends Fragment {
+
+    public FavorisFragment(){
 
     }
 
@@ -19,6 +21,6 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return inflater.inflate(R.layout.fragment_favoris, container, false);
     }
 }

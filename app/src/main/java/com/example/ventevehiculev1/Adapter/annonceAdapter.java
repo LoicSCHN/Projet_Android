@@ -1,4 +1,4 @@
-package com.example.ventevehiculev1;
+package com.example.ventevehiculev1.Adapter;
 
 
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ventevehiculev1.R;
+import com.example.ventevehiculev1.models.Annonce;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
