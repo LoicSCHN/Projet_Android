@@ -15,6 +15,7 @@ import com.example.ventevehiculev1.MainActivity;
 import com.example.ventevehiculev1.R;
 import com.example.ventevehiculev1.models.Annonce;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.Query;
 
 
 public class HomeFragment extends Fragment {
@@ -42,11 +43,14 @@ public class HomeFragment extends Fragment {
         linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        Query query;
+        query = MainActivity.BDD.getDatabase().getReference("Annonce");
         FirebaseRecyclerOptions<Annonce> options = new FirebaseRecyclerOptions.Builder<Annonce>()
-                .setQuery(MainActivity.BDD,Annonce.class)
+                .setQuery(query,Annonce.class)
                 .build();
 
         adapter = new annonceAdapter(options);
+
         recyclerView.setAdapter(adapter);
 
 
