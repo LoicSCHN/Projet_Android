@@ -47,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
     public static DatabaseReference BDD;
     //public static FirebaseStorage STORAGE;
     public static FirebaseAuth AUTH;
-    //private RecyclerView recyclerView;
-    //private annonceAdapter adapter;
+
 
     private LinearLayout linearLayoutHome;
     private LinearLayout linearLayoutProfile;

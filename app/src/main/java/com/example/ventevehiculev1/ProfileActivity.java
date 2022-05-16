@@ -151,35 +151,4 @@ public class ProfileActivity extends AppCompatActivity {
 }
 
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------------
-// NavBar
-/*
-        bottomNavigationView = findViewById(R.id.BottomNavBar);
-        bottomNavigationView.setSelectedItemId(R.id.profile);
 
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()){
-
-                    case R.id.search:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.fav:
-                        startActivity(new Intent(getApplicationContext(),FavorisActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
-            }
-        });
-*/
-//----------------------------------------------------------------------------------------------------------------------------------------------------------

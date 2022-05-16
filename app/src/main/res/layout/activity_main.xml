@@ -124,7 +124,7 @@
                 android:id="@+id/btnMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_baseline_person"
+                android:background="@drawable/ic_baseline_favorite_border"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>
@@ -146,7 +146,7 @@
                 android:id="@+id/btnShop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_baseline_person"
+                android:background="@drawable/ic_baseline_search"
                 tools:ignore="SpeakableTextPresentCheck" />
 
         </LinearLayout>

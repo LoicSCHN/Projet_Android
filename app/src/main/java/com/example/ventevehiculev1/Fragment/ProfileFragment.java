@@ -7,11 +7,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.ventevehiculev1.R;
 
 
 public class ProfileFragment extends Fragment {
+    private Button btn_deposer;
+    private Button btn_mes_annonces;
+    private TextView name;
+    private Button coDeco;
 
     public ProfileFragment(){
 

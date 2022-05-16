@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/drawable/ic_baseline_email.xml" value="0.193" />
+        <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/drawable/ic_baseline_favorite_border.xml" value="0.193" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/drawable/ic_baseline_lock.xml" value="0.193" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/drawable/ic_baseline_pan_tool.xml" value="0.193" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/drawable/ic_baseline_person.xml" value="0.193" />
@@ -11,12 +13,13 @@
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_annonce.xml" value="0.25" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_favoris.xml" value="0.25" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_login.xml" value="0.536" />
-        <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_mes_annonces.xml" value="0.11979166666666667" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_profile.xml" value="0.25" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_register.xml" value="0.275" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_search.xml" value="0.25" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/fragment_favoris.xml" value="0.25" />
+        <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
       </map>
     </option>

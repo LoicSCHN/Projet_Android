@@ -3,20 +3,72 @@ package com.example.ventevehiculev1.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ventevehiculev1.Adapter.annonceAdapter;
+import com.example.ventevehiculev1.MainActivity;
 import com.example.ventevehiculev1.R;
+import com.example.ventevehiculev1.models.Annonce;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 
 public class HomeFragment extends Fragment {
+    private RecyclerView recyclerView;
+    private annonceAdapter adapter;
+
+    public HomeFragment() {
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        recyclerView = view.findViewById(R.id.annonces);
+
+        LinearLayoutManager linearLayoutManager;
+
+        linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+        FirebaseRecyclerOptions<Annonce> options = new FirebaseRecyclerOptions.Builder<Annonce>()
+                .setQuery(MainActivity.BDD,Annonce.class)
+                .build();
+
+        adapter = new annonceAdapter(options);
+        recyclerView.setAdapter(adapter);
+
+
+
+
+        return view;
     }
+
+    @Override public void onStart() {
+        super.onStart();
+        if (adapter != null) {
+            adapter.startListening();
+        }
+    }
+
+    // Function to tell the app to stop getting
+    // data from database on stopping of the activity
+    @Override public void onStop() {
+        super.onStop();
+        if (adapter != null) {
+            adapter.stopListening();
+        }
+    }
+
 }
