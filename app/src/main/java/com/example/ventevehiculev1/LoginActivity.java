@@ -38,9 +38,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         // Boutton mail and mdp
-        btnlog = findViewById(R.id.btnlog);
+       // btnlog = findViewById(R.id.btnlog);
         email = findViewById(R.id.email);
-        mdp = findViewById(R.id.mdp);
+        //mdp = findViewById(R.id.mdp);
 
         // Création de l'instance
         mAuth = FirebaseAuth.getInstance();

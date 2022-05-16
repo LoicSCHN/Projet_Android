@@ -14,8 +14,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.example.ventevehiculev1.Adapter.annonceAdapter;
+import com.example.ventevehiculev1.Fragment.FavorisFragment;
+import com.example.ventevehiculev1.Fragment.HomeFragment;
+import com.example.ventevehiculev1.Fragment.ProfileFragment;
 import com.example.ventevehiculev1.models.Annonce;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
@@ -35,85 +39,60 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 
-    private Fragment fragment_profile;
-    private Fragment fragment_favoris;
-    private Fragment fragment_home;
 
-    private static final int RC_SIGN_IN = 123;
-    private Button btn_login;
-    private Button btn_register;
+    private Fragment fragment_Home;
+    private Fragment fragment_Profile;
+    private Fragment fragment_Fav;
 
-    private BottomNavigationView bottomNavigationView;
+    public static DatabaseReference BDD;
+    //public static FirebaseStorage STORAGE;
+    public static FirebaseAuth AUTH;
+    //private RecyclerView recyclerView;
+    //private annonceAdapter adapter;
 
-    private RecyclerView recyclerView;
-    private annonceAdapter adapter;
+    private LinearLayout linearLayoutHome;
+    private LinearLayout linearLayoutProfile;
+    private LinearLayout linearLayoutFav;
 
-    DatabaseReference databaseAnnonce;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setupListeners();
-        btn_register = findViewById(R.id.button_to_register);
-        bottomNavigationView = findViewById(R.id.BottomNavBar);
-        bottomNavigationView.setSelectedItemId(R.id.search);
 
-        /*btn_register.setOnClickListener(new View.OnClickListener() {
+        BDD = FirebaseDatabase.getInstance("https://vente-voiture-ceac9-default-rtdb.europe-west1.firebasedatabase.app").getReference();
+        AUTH = FirebaseAuth.getInstance();
+
+        fragment_Home = new HomeFragment();
+        fragment_Profile = new ProfileFragment();
+        fragment_Fav = new FavorisFragment();
+
+        linearLayoutHome     = findViewById(R.id.homeLayout);
+        linearLayoutProfile  = findViewById(R.id.profileLayout);
+        linearLayoutFav      = findViewById(R.id.FavLayout);
+
+        linearLayoutHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(MainActivity.this,RegisterActivity.class);
-                startActivity(intent);
-
-            }
-        });*/
-
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()){
-
-                    case R.id.search:
-
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
-                        replaceCurrentFragmentBy(fragment_home);
-                        return true;
-
-                    case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
-                        overridePendingTransition(0,0);
-                        replaceCurrentFragmentBy(fragment_profile);
-                        return true;
-
-                    case R.id.fav:
-                        /*
-                        startActivity(new Intent(getApplicationContext(),FavorisActivity.class));
-                        overridePendingTransition(0,0);
-                        */
-                        replaceCurrentFragmentBy(fragment_favoris);
-                        return true;
-
-                }
-                return false;
+                replaceCurrentFragmentBy(fragment_Home);
             }
         });
 
-        btn_login = findViewById(R.id.button_to_login);
-        btn_register = findViewById(R.id.button_to_register);
+        linearLayoutProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                replaceCurrentFragmentBy(fragment_Profile);
+            }
+        });
 
-        databaseAnnonce = FirebaseDatabase.getInstance("https://vente-voiture-ceac9-default-rtdb.europe-west1.firebasedatabase.app").getReference("Annonce");
+        linearLayoutFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                replaceCurrentFragmentBy(fragment_Fav);
+            }
 
-        recyclerView = findViewById(R.id.recycler1);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        FirebaseRecyclerOptions<Annonce> options = new FirebaseRecyclerOptions.Builder<Annonce>()
-                .setQuery(databaseAnnonce,Annonce.class)
-                .build();
-
-        adapter = new annonceAdapter(options);
-        recyclerView.setAdapter(adapter);
-
+        });
 
     }
 
@@ -124,68 +103,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void setupListeners(){
-        // Login Button
-        btn_login = findViewById(R.id.button_to_login);
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startSignInActivity();
-            }
-        });
 
-    }
 
-    private void startSignInActivity(){
 
-        // Choose authentication providers
-        List<AuthUI.IdpConfig> providers = Arrays.asList(
-                new AuthUI.IdpConfig.EmailBuilder().build(),
-                new AuthUI.IdpConfig.PhoneBuilder().build(),
-                new AuthUI.IdpConfig.GoogleBuilder().build());
+}
 
-        Intent signInIntent = AuthUI.getInstance()
-                .createSignInIntentBuilder()
-                .setAvailableProviders(providers)
+        /*
+
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------
+        // NavBar
+
+        databaseAnnonce = FirebaseDatabase.getInstance("https://vente-voiture-ceac9-default-rtdb.europe-west1.firebasedatabase.app").getReference("Annonce");
+
+        recyclerView = findViewById(R.id.recycler1);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        FirebaseRecyclerOptions<Annonce> options = new FirebaseRecyclerOptions.Builder<Annonce>()
+                .setQuery(databaseAnnonce,Annonce.class)
                 .build();
-        signInLauncher.launch(signInIntent);
-        // Launch the activity
-        /*startActivity(
-                AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setTheme(R.style.LoginTheme)
-                        .setAvailableProviders(providers)
-                        .setIsSmartLockEnabled(false, true)
-                        .build(),
-                RC_SIGN_IN);
-    */
-    }
 
-    private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
-            new FirebaseAuthUIActivityResultContract(),
-            new ActivityResultCallback<FirebaseAuthUIAuthenticationResult>() {
-                @Override
-                public void onActivityResult(FirebaseAuthUIAuthenticationResult result) {
-                    onSignInResult(result);
-                }
-            }
-    );
+        adapter = new annonceAdapter(options);
+            recyclerView.setAdapter(adapter);
 
-    private void onSignInResult(FirebaseAuthUIAuthenticationResult result) {
-        IdpResponse response = result.getIdpResponse();
-        if (result.getResultCode() == RESULT_OK) {
-            // Successfully signed in
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            // ...
-        } else {
-            // Sign in failed. If response is null the user canceled the
-            // sign-in flow using the back button. Otherwise check
-            // response.getError().getErrorCode() and handle the error.
-            // ...
-        }
-    }
-
-    @Override protected void onStart()
+   @Override protected void onStart()
     {
         super.onStart();
         adapter.startListening();
@@ -196,40 +135,12 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
-        /*setContentView(R.layout.activity_main);
-
-
-
-        */
-        //----------------------------------------------------------------------------------------------------------------------------------------------------------
-        // NavBar
-
-        // A voir si on utilise des fragments pour la suite //
-
-
-
-        /* A voir si on utilise des fragments pour la suite
-
-        private void replaceFragment(Fragment fragment)
-        {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
-        }
-
-
         //----------------------------------------------------------------------------------------------------------------------------------------------------------
         /*
-
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent =new Intent(MainActivity.this,LoginActivity.class);
-                startActivity(intent);
-            }
-        });*/
+*/
 
 
 
 
 
 
-}
