@@ -93,28 +93,20 @@
         app:layout_constraintTop_toBottomOf="@+id/lastName_reg">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/Particulier"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Particulier" />
+            android:text="Particulier"
+            android:onClick="onRadioButtonClicked"/>/>
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/pro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Professionnel" />
+            android:text="Professionnel"
+            android:onClick="onRadioButtonClicked"/>/>
 
     </RadioGroup>
-
-    <FrameLayout
-        android:id="@+id/fragment"
-        android:name="com.example.trouvetout.HomeFragment"
-        android:layout_width="424dp"
-        android:layout_height="317dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <TextView
         android:id="@+id/textView5"
@@ -177,5 +169,28 @@
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/name_reg" />
+
+    <CheckBox
+        android:id="@+id/checkAbo"
+        android:layout_width="282dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="87dp"
+        android:text="Abonnement"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textAbo"
+        android:onClick="onCheckboxClicked"/>
+
+    <TextView
+        android:id="@+id/textAbo"
+        android:layout_width="345dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="79dp"
+        android:text="Je prends un abonnement :"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

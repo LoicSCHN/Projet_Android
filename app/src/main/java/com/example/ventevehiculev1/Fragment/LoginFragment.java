@@ -57,6 +57,7 @@ public class LoginFragment extends Fragment {
     private FirebaseAuth mAuth;
 
 
+
     public LoginFragment() {
         // Required empty public constructor
     }
