@@ -20,6 +20,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText email;
     private EditText mdp;
+    private EditText name;
+    private EditText lastName;
     private Button btnreg;
 
     private FirebaseAuth mAuth;
@@ -31,6 +33,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         email = findViewById(R.id.email_reg);
         mdp = findViewById(R.id.mdp_reg);
+        name = findViewById(R.id.name_reg);
+        lastName = findViewById(R.id.lastName_reg);
         btnreg = findViewById(R.id.btnreg);
 
         mAuth = FirebaseAuth.getInstance();

@@ -6,14 +6,16 @@ public class User {
     private String prenom;
     private String password;
     private String mdp;
-    private String type;
+    private boolean type;
+    private boolean abo;
 
-    public User(int id, String nom, String prenom, String password, String mdp, String type) {
+    public User(int id, String nom, String prenom, String password, String mdp, Boolean type, Boolean abo) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.password = password;
         this.mdp = mdp;
         this.type = type;
+        this.abo = abo;
     }
 }
