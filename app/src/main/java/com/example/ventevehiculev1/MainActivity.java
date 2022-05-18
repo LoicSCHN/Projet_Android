@@ -17,6 +17,7 @@ import com.example.ventevehiculev1.Fragment.HomeFragment;
 import com.example.ventevehiculev1.Fragment.ProfileFragment;
 import com.example.ventevehiculev1.Fragment.LoginFragment;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -62,12 +63,15 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutHome     = findViewById(R.id.homeLayout);
         linearLayoutProfile  = findViewById(R.id.profileLayout);
         linearLayoutFav      = findViewById(R.id.FavLayout);
-
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         replaceCurrentFragmentBy(fragment_Home);
         btn_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceCurrentFragmentBy(fragment_login);
+                if (user != null)
+                    replaceCurrentFragmentBy(fragment_Profile);
+                else
+                    replaceCurrentFragmentBy(fragment_login);
             }
         });
 
@@ -81,7 +85,10 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                replaceCurrentFragmentBy(fragment_Profile);
+                if (user != null)
+                    replaceCurrentFragmentBy(fragment_Profile);
+                else
+                    replaceCurrentFragmentBy(fragment_login);
             }
         });
 

@@ -64,6 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
+
         btnreg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,10 +102,11 @@ public class RegisterActivity extends AppCompatActivity {
                         if(task.isSuccessful())
                         {
                             FirebaseUser u = FirebaseAuth.getInstance().getCurrentUser();
-                            User user = new User("u.getUid()", nom, prenom,pro , abonne );
                             databaseUser = FirebaseDatabase.getInstance("https://vente-voiture-ceac9-default-rtdb.europe-west1.firebasedatabase.app").getReference("User");
+
+                            User user = new User(u.getUid().toString(), nom.toString(), prenom.toString(),pro , abonne );
                             String id = databaseUser.push().getKey();
-                            databaseUser.child(id).setValue(u);
+                            databaseUser.child(id).setValue(user);
                             /*FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                     .setDisplayName("Jane Q. User")
