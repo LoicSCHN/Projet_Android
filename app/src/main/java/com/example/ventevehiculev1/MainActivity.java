@@ -18,6 +18,7 @@ import com.example.ventevehiculev1.Fragment.FavorisFragment;
 import com.example.ventevehiculev1.Fragment.HomeFragment;
 import com.example.ventevehiculev1.Fragment.ProfileFragment;
 import com.example.ventevehiculev1.Fragment.LoginFragment;
+import com.example.ventevehiculev1.Fragment.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private Fragment fragment_Profile;
     private Fragment fragment_Fav;
     private Fragment fragment_login;
+    private Fragment fragment_Search;
 
     private ImageButton btn_user;
 
@@ -63,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         fragment_Profile = new ProfileFragment();
         fragment_Fav = new FavorisFragment();
         fragment_login = new LoginFragment();
+        fragment_Search = new SearchFragment();
+
         /*
         linearLayoutHome     = findViewById(R.id.homeLayout);
         linearLayoutProfile  = findViewById(R.id.profileLayout);
@@ -123,6 +127,10 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.FavLayout:
                         replaceCurrentFragmentBy(fragment_Fav);
+                        return true;
+
+                    case R.id.SearchLayout:
+                        replaceCurrentFragmentBy(fragment_Search);
                         return true;
                 }
                 return false;

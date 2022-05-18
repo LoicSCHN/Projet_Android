@@ -16,5 +16,10 @@
         android:title="@string/favoris"
         android:icon="@drawable/ic_baseline_favorite_border"
         />
+    <item
+        android:id="@+id/SearchLayout"
+        android:title="@string/search"
+        android:icon="@drawable/ic_baseline_search"
+        />
 
 </menu>
