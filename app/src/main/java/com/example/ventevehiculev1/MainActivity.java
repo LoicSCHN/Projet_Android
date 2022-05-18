@@ -1,5 +1,6 @@
 package com.example.ventevehiculev1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -7,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -16,6 +18,8 @@ import com.example.ventevehiculev1.Fragment.FavorisFragment;
 import com.example.ventevehiculev1.Fragment.HomeFragment;
 import com.example.ventevehiculev1.Fragment.ProfileFragment;
 import com.example.ventevehiculev1.Fragment.LoginFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -36,12 +40,12 @@ public class MainActivity extends AppCompatActivity {
     //public static FirebaseStorage STORAGE;
     public static FirebaseAuth AUTH;
 
-
+    /*
     private LinearLayout linearLayoutHome;
     private LinearLayout linearLayoutProfile;
     private LinearLayout linearLayoutFav;
-
-
+    */
+    private BottomNavigationView bottomNavigationView;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -59,10 +63,12 @@ public class MainActivity extends AppCompatActivity {
         fragment_Profile = new ProfileFragment();
         fragment_Fav = new FavorisFragment();
         fragment_login = new LoginFragment();
-
+        /*
         linearLayoutHome     = findViewById(R.id.homeLayout);
         linearLayoutProfile  = findViewById(R.id.profileLayout);
-        linearLayoutFav      = findViewById(R.id.FavLayout);
+        linearLayoutFav      = findViewById(R.id.FavLayout);*/
+        bottomNavigationView = findViewById(R.id.bottom_navbar);
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         replaceCurrentFragmentBy(fragment_Home);
         btn_user.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     replaceCurrentFragmentBy(fragment_login);
             }
         });
-
+        /*
         linearLayoutHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -98,6 +104,29 @@ public class MainActivity extends AppCompatActivity {
                 replaceCurrentFragmentBy(fragment_Fav);
             }
 
+        });*/
+        bottomNavigationView.setSelectedItemId(R.id.homeLayout);
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+
+                    case R.id.homeLayout:
+                        replaceCurrentFragmentBy(fragment_Home);
+                        return true;
+
+                    case R.id.profileLayout:
+                        replaceCurrentFragmentBy(fragment_Profile);
+                        return true;
+
+                    case R.id.FavLayout:
+                        replaceCurrentFragmentBy(fragment_Fav);
+                        return true;
+                }
+                return false;
+            }
         });
 
     }

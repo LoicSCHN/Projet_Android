@@ -11,5 +11,6 @@
     <string name="login">Login</string>
     <string name="string_login" />
     <string name="register">Register</string>
+    <string name="home">Home</string>
 
 </resources>
