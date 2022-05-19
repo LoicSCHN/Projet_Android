@@ -107,21 +107,6 @@ public class RegisterActivity extends AppCompatActivity {
                             User user = new User(u.getUid().toString(), nom.toString(), prenom.toString(),pro , abonne );
                             String id = databaseUser.push().getKey();
                             databaseUser.child(id).setValue(user);
-                            /*FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                    .setDisplayName("Jane Q. User")
-                                    .setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
-                                    .build();
-
-                            user.updateProfile(profileUpdates)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Log.d(TAG, "User profile updated.");
-                                            }
-                                        }
-                                    });*/
                             Toast.makeText(getApplicationContext(), "User is created successfuly :D", Toast.LENGTH_SHORT).show();
                             mAuth.signOut();
                             Intent intent = new Intent(RegisterActivity.this,MainActivity.class);

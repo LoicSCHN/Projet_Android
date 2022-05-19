@@ -122,11 +122,17 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.profileLayout:
-                        replaceCurrentFragmentBy(fragment_Profile);
+                        if (user != null)
+                            replaceCurrentFragmentBy(fragment_Profile);
+                        else
+                            replaceCurrentFragmentBy(fragment_login);
                         return true;
 
                     case R.id.FavLayout:
-                        replaceCurrentFragmentBy(fragment_Fav);
+                        if (user != null)
+                            replaceCurrentFragmentBy(fragment_Fav);
+                        else
+                            replaceCurrentFragmentBy(fragment_login);
                         return true;
 
                     case R.id.SearchLayout:
