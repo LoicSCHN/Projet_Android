@@ -4,6 +4,7 @@ package com.example.ventevehiculev1.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,8 @@ import com.example.ventevehiculev1.R;
 import com.example.ventevehiculev1.models.Annonce;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+
+import java.util.ArrayList;
 
 public class annonceAdapter extends FirebaseRecyclerAdapter<Annonce,annonceAdapter.myViewHolder> {
 
@@ -39,7 +42,10 @@ public class annonceAdapter extends FirebaseRecyclerAdapter<Annonce,annonceAdapt
 
     public static class myViewHolder extends RecyclerView.ViewHolder
     {
+        private ArrayList<Annonce> mExemple;
         TextView title;
+
+
         public myViewHolder(@NonNull View itemView)
         {
             super(itemView);
