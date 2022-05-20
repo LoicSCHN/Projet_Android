@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 switch (item.getItemId()){
 
                     case R.id.homeLayout:
@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.profileLayout:
+                        user = FirebaseAuth.getInstance().getCurrentUser();
                         if (user != null)
                             replaceCurrentFragmentBy(fragment_Profile);
                         else
@@ -129,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.FavLayout:
+                        user = FirebaseAuth.getInstance().getCurrentUser();
                         if (user != null)
                             replaceCurrentFragmentBy(fragment_Fav);
                         else

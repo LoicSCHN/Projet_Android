@@ -68,37 +68,7 @@ public class MesAnnoncesActivity extends AppCompatActivity {
         adapter = new annonceAdapter(options);
         recyclerView.setAdapter(adapter);
 
-        //----------------------------------------------------------------------------------------------------------------------------------------------------------
-        // NavBar
 
-        /*
-        bottomNavigationView.setSelectedItemId(R.id.profileLayout);
-
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()){
-
-                    case R.id.homeLayout:
-                        replaceCurrentFragmentBy(fragment_Home);
-                        return true;
-
-                    case R.id.profileLayout:
-                        replaceCurrentFragmentBy(fragment_Profile);
-                        return true;
-
-                    case R.id.FavLayout:
-                        replaceCurrentFragmentBy(fragment_Fav);
-                        return true;
-
-                    case R.id.SearchLayout:
-                        replaceCurrentFragmentBy(fragment_Search);
-                        return true;
-                }
-                return false;
-            }
-        });*/
 
 
     }

@@ -60,8 +60,12 @@ public class ProfileFragment extends Fragment {
         btn_mes_annonces = view.findViewById(R.id.button_mes_annonces);
         coDeco = view.findViewById(R.id.connexion_button);
         name = view.findViewById(R.id.nomProfil);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null)
+            name.setText(user.getDisplayName());
+        else
+            name.setText("pas de user");
 
 
         if (user != null){
@@ -76,7 +80,6 @@ public class ProfileFragment extends Fragment {
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Toast toast =  Toast.makeText(view.getContext(), "Vous êtes deconnecté !", Toast.LENGTH_SHORT);
-                                    //toast.setGravity(Gravity.BOTTOM | Gravity.CENTER, 20, 30);
                                     toast.show();
                                     Fragment fragment = new HomeFragment();
                                     android.content.Context context = view.getContext();

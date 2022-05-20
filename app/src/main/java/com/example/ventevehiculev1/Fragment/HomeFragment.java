@@ -15,6 +15,8 @@ import com.example.ventevehiculev1.MainActivity;
 import com.example.ventevehiculev1.R;
 import com.example.ventevehiculev1.models.Annonce;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.Query;
 
 
@@ -35,7 +37,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         recyclerView = view.findViewById(R.id.annonces);
 
         LinearLayoutManager linearLayoutManager;
