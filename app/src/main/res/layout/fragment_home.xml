@@ -11,10 +11,21 @@
         android:id="@+id/annonces"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="379dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="19dp"
+        android:text="Les dernières annonces :"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

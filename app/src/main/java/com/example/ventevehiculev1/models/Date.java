@@ -10,4 +10,28 @@ public class Date {
         this.jourDebut = jourDebut;
         this.jourFin = jourFin;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getJourDebut() {
+        return jourDebut;
+    }
+
+    public void setJourDebut(String jourDebut) {
+        this.jourDebut = jourDebut;
+    }
+
+    public String getJourFin() {
+        return jourFin;
+    }
+
+    public void setJourFin(String jourFin) {
+        this.jourFin = jourFin;
+    }
 }
