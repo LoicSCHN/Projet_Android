@@ -12,27 +12,35 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ventevehiculev1.Adapter.annonceAdapter;
 import com.example.ventevehiculev1.MainActivity;
 import com.example.ventevehiculev1.MesAnnoncesActivity;
 import com.example.ventevehiculev1.ProfileActivity;
 import com.example.ventevehiculev1.R;
 import com.example.ventevehiculev1.addAnnonceActivity;
+import com.example.ventevehiculev1.models.Annonce;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.core.Context;
 
 import java.util.Arrays;
@@ -44,6 +52,8 @@ public class ProfileFragment extends Fragment {
     private Button btn_mes_annonces;
     private TextView name;
     private Button coDeco;
+    private MesAnnoncesFragment mesAnnoncesFragment;
+
 
     public ProfileFragment(){
 
@@ -60,6 +70,7 @@ public class ProfileFragment extends Fragment {
         btn_mes_annonces = view.findViewById(R.id.button_mes_annonces);
         coDeco = view.findViewById(R.id.connexion_button);
         name = view.findViewById(R.id.nomProfil);
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null)
@@ -102,14 +113,22 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), addAnnonceActivity.class);
                 startActivity(intent);
+
             }
         });
 
         btn_mes_annonces.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getView().getContext(), MesAnnoncesActivity.class);
-                startActivity(intent);
+            public void onClick(View v) {
+                //Intent intent = new Intent(view.getContext(), MesAnnoncesActivity.class);
+                //startActivity(intent);
+                //Fragment f = new MesAnnoncesFragment();
+                //FrameLayout frame = v.findViewById(R.id.FrameMes_annonces);
+                Fragment f = new MesAnnoncesFragment();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.fragment,f);
+                ft.commit();
+
             }
         });
 
@@ -118,6 +137,7 @@ public class ProfileFragment extends Fragment {
         return view;
 
     }
+
 
     private void setupListeners(View view){
         coDeco = view.findViewById(R.id.connexion_button);
@@ -129,8 +149,6 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
-
-
 
 
     private void startSignInActivity(){
