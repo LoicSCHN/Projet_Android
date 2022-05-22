@@ -8,18 +8,27 @@ public class Annonce {
     private int prix;
     private int id_Localisation;
     */
-    //private String id;
+    private String id;
     private String title;
     private String id_proprietaire;
     private Voiture voiture;
 
-    public Annonce(String title,String id_proprietaire,Voiture voiture){
+    public Annonce(String id,String title,String id_proprietaire,Voiture voiture){
+        this.id = id;
         this.title=title;
         this.id_proprietaire = id_proprietaire;
         this.voiture = voiture;
     }
     public Annonce(){
 
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getId_proprietaire() {

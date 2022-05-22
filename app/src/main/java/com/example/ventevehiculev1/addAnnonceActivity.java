@@ -81,7 +81,7 @@ public class addAnnonceActivity extends AppCompatActivity {
         {
             String id = databaseAnnonce.push().getKey();
             Voiture voiture = new Voiture(marque,modele,categorie,energie,kilometrage,btv,nbp,puissance);
-            Annonce annonce = new Annonce(title,user.getUid(),voiture);
+            Annonce annonce = new Annonce(id,title,user.getUid(),voiture);
             databaseAnnonce.child(id).setValue(annonce);
             //databaseAnnonce.push();
             Toast.makeText(this,"Annonce add",Toast.LENGTH_LONG).show();

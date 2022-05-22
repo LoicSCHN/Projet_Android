@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -35,6 +36,7 @@ public class annonceAdapter extends FirebaseRecyclerAdapter<Annonce,annonceAdapt
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull Annonce model)
     {
         holder.title.setText(model.getTitle());
+        holder.id = this.getRef(position).getKey();
     }
 
     @NonNull
@@ -49,20 +51,23 @@ public class annonceAdapter extends FirebaseRecyclerAdapter<Annonce,annonceAdapt
 
     public static class myViewHolder extends RecyclerView.ViewHolder
     {
+        private View.OnClickListener onItemClickerListener;
         private ArrayList<Annonce> mExemple;
         TextView title;
-
+        String id;
 
         public myViewHolder(@NonNull View itemView)
         {
             super(itemView);
             title = itemView.findViewById(R.id.titleannonce);
+            id="no";
 
             itemView.setTag(this);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Fragment fragment = new DetailsFragment();
+                    Toast.makeText(itemView.getContext(), id+"On test ici", Toast.LENGTH_SHORT).show();
+                    Fragment fragment =  DetailsFragment.newInstance(id);
                     Context context = itemView.getContext();
                     FragmentManager fragmentManager = ((FragmentActivity)context).getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
