@@ -50,4 +50,12 @@ public class Annonce {
     public void setVoiture(Voiture voiture) {
         this.voiture = voiture;
     }
+    @Override
+    public String toString() {
+        return "Annonce{" +
+                "id='" + id + '\'' +
+                ", nom='" + title + '\'' +
+                '}';
+    }
 }
+

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.example.ventevehiculev1.Adapter.MesAnnoncesAdapter;
 import com.example.ventevehiculev1.Adapter.annonceAdapter;
 import com.example.ventevehiculev1.MainActivity;
 import com.example.ventevehiculev1.R;
@@ -29,7 +30,8 @@ public class MesAnnoncesFragment extends Fragment {
 
     DatabaseReference test;
     private RecyclerView recyclerView;
-    private annonceAdapter adapter;
+    private MesAnnoncesAdapter adapter;
+    private annonceAdapter adp;
     private BottomNavigationView bottomNavigationView;
 
     private Fragment fragment_Home;
@@ -56,8 +58,6 @@ public class MesAnnoncesFragment extends Fragment {
 
         LinearLayoutManager linearLayoutManager;
 
-        linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(linearLayoutManager);
 
         Query query;
         query = MainActivity.BDD.getDatabase().getReference("Annonce")
@@ -68,7 +68,10 @@ public class MesAnnoncesFragment extends Fragment {
                 .setQuery(query,Annonce.class)
                 .build();
 
-        adapter = new annonceAdapter(options);
+        adapter = new MesAnnoncesAdapter(options);
+
+        linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         recyclerView.setAdapter(adapter);
 

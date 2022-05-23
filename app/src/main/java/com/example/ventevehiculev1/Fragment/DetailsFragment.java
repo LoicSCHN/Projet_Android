@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.ventevehiculev1.MainActivity;
@@ -29,6 +30,7 @@ public class DetailsFragment extends Fragment {
     private TextView title;
     private TextView puissance;
     private String id;
+    private Button button_contact;
 
     public DetailsFragment(){}
 
@@ -53,6 +55,16 @@ public class DetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_details, container, false);
+        button_contact = v.findViewById(R.id.btn_contact);
+
+        button_contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
+        });
+
         MainActivity.BDD.child("Annonce").child(id).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
