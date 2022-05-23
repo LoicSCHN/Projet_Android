@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VenteVehiculeV1">
         <activity
+            android:name=".ContactActivity"
+            android:exported="false" />
+        <activity
             android:name=".MesAnnoncesActivity"
             android:exported="false" />
         <activity

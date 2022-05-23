@@ -1,6 +1,7 @@
 package com.example.ventevehiculev1.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,14 +12,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.ventevehiculev1.ContactActivity;
 import com.example.ventevehiculev1.MainActivity;
 import com.example.ventevehiculev1.R;
 import com.example.ventevehiculev1.models.Annonce;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.Query;
 
 import org.w3c.dom.Text;
 
@@ -30,6 +35,7 @@ public class DetailsFragment extends Fragment {
     private TextView title;
     private TextView puissance;
     private String id;
+    private Annonce annonce;
     private Button button_contact;
 
     public DetailsFragment(){}
@@ -57,13 +63,6 @@ public class DetailsFragment extends Fragment {
         View v =  inflater.inflate(R.layout.fragment_details, container, false);
         button_contact = v.findViewById(R.id.btn_contact);
 
-        button_contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-            }
-        });
 
         MainActivity.BDD.child("Annonce").child(id).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -86,9 +85,23 @@ public class DetailsFragment extends Fragment {
                     modele.setText(a.getVoiture().getModele());
                     kilometrage.setText(a.getVoiture().getKilometrage());
 
+                    button_contact.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Annonce a = task.getResult().getValue(Annonce.class);
+                            String number = a.getTitle();
+                            Intent intent = new Intent(v.getContext(), ContactActivity.class);
+                            intent.putExtra("number",number);
+                            Toast.makeText(v.getContext(), number+"ici", Toast.LENGTH_SHORT).show();
+                            v.getContext().startActivity(intent);
+
+                        }
+                    });
+
                 }
             }
         });
+
 
         return v;
     }
