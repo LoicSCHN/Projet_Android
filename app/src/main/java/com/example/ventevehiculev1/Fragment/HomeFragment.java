@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        recyclerView = view.findViewById(R.id.annonces);
+        recyclerView = view.findViewById(R.id.annoncesSearch);
 
         LinearLayoutManager linearLayoutManager;
 

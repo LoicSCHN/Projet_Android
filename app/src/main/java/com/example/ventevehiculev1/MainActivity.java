@@ -78,23 +78,7 @@ public class MainActivity extends AppCompatActivity {
         btn_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (user != null)
-                    replaceCurrentFragmentBy(fragment_Profile);
-                else
-                    replaceCurrentFragmentBy(fragment_login);
-            }
-        });
-        /*
-        linearLayoutHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                replaceCurrentFragmentBy(fragment_Home);
-            }
-        });
-
-        linearLayoutProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null)
                     replaceCurrentFragmentBy(fragment_Profile);
                 else
@@ -102,13 +86,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        linearLayoutFav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                replaceCurrentFragmentBy(fragment_Fav);
-            }
-
-        });*/
         bottomNavigationView.setSelectedItemId(R.id.homeLayout);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
