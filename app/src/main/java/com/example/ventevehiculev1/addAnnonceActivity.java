@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ventevehiculev1.models.Annonce;
+import com.example.ventevehiculev1.models.User;
 import com.example.ventevehiculev1.models.Voiture;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -45,6 +47,7 @@ public class addAnnonceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_annonce);
+        checkIfAbo();
 
         id = getIntent().getStringExtra("idAnnonce");
         if (id != null) {
@@ -122,5 +125,32 @@ public class addAnnonceActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Error", Toast.LENGTH_LONG).show();
         }
+    }
+
+
+    public void checkIfAbo(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        MainActivity.BDD.child("User").child(user.getUid()).get().addOnCompleteListener(
+                new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+
+                        if (!task.isSuccessful()) {
+                            Log.e("FIREBASE", "ERREUR", task.getException());
+                            title_add.setText("dqsdfsdfsddfsd");
+                        }
+                        else {
+                            Log.d("FIREBASE", String.valueOf(task.getResult().getValue()));
+                            User u = task.getResult().getValue(User.class);
+                            title_add.setText(String.valueOf(String.valueOf(task.getResult().getValue())));
+                        }
+                        /*if (u.isAbo() == true){
+                            findViewById(R.id.image3).setVisibility(View.INVISIBLE);
+                            findViewById(R.id.image4).setVisibility(View.INVISIBLE);
+                        }*/
+
+                    }
+                }
+        );
     }
 }
