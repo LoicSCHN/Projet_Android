@@ -25,9 +25,9 @@ import com.google.firebase.database.Query;
 
 
 public class SearchFragment extends Fragment {
+    private static annonceAdapter adapter;
     private EditText editText;
     private RecyclerView recyclerView;
-    private annonceAdapter adapter;
     private Button search;
     Query query;
     @Override
@@ -48,9 +48,6 @@ public class SearchFragment extends Fragment {
         linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-
-
-
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,8 +58,12 @@ public class SearchFragment extends Fragment {
                         .setQuery(query,Annonce.class)
                         .build();
 
-
-                recyclerView.setAdapter(adapter);
+                SearchFragment.adapter = new annonceAdapter(options,getContext());
+                LinearLayoutManager linearLayoutManagers;
+                linearLayoutManagers = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+                recyclerView.setLayoutManager(linearLayoutManagers);
+                recyclerView.setAdapter(SearchFragment.adapter);
+                SearchFragment.adapter.startListening();
 
             }
         });

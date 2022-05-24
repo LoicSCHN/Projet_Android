@@ -27,9 +27,13 @@ import java.util.ArrayList;
 
 public class annonceAdapter extends FirebaseRecyclerAdapter<Annonce,annonceAdapter.myViewHolder> {
 
-    public annonceAdapter(@NonNull FirebaseRecyclerOptions<Annonce> options)
+    public Context context;
+
+    public annonceAdapter(@NonNull FirebaseRecyclerOptions<Annonce> options,Context context)
     {
         super(options);
+        this.context=context;
+
     }
 
     @Override

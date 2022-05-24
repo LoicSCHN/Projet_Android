@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
                 .setQuery(query,Annonce.class)
                 .build();
 
-        adapter = new annonceAdapter(options);
+        adapter = new annonceAdapter(options,getContext());
 
         recyclerView.setAdapter(adapter);
 
