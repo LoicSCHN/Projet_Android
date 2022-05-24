@@ -2,10 +2,14 @@ package com.example.ventevehiculev1.Adapter;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,10 +22,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ventevehiculev1.Fragment.DetailsFragment;
 import com.example.ventevehiculev1.Fragment.MesAnnoncesFragment;
+import com.example.ventevehiculev1.MainActivity;
 import com.example.ventevehiculev1.R;
 import com.example.ventevehiculev1.models.Annonce;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -41,6 +49,7 @@ public class annonceAdapter extends FirebaseRecyclerAdapter<Annonce,annonceAdapt
     {
         holder.title.setText(model.getTitle());
         holder.id = this.getRef(position).getKey();
+        dlImageFromFireBaseStorage(holder, model.getPhoto().get(0));
     }
 
     @NonNull
@@ -55,6 +64,7 @@ public class annonceAdapter extends FirebaseRecyclerAdapter<Annonce,annonceAdapt
 
     public static class myViewHolder extends RecyclerView.ViewHolder
     {
+        public ImageView imageView;
         private View.OnClickListener onItemClickerListener;
         private ArrayList<Annonce> mExemple;
         TextView title;
@@ -65,7 +75,7 @@ public class annonceAdapter extends FirebaseRecyclerAdapter<Annonce,annonceAdapt
             super(itemView);
             title = itemView.findViewById(R.id.titleannonce);
             id="no";
-
+            imageView = (ImageView) itemView.findViewById(R.id.appercu_imageView);
             itemView.setTag(this);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -82,5 +92,23 @@ public class annonceAdapter extends FirebaseRecyclerAdapter<Annonce,annonceAdapt
             });
 
         }
+    }
+
+    private void dlImageFromFireBaseStorage(myViewHolder holder, String url){
+        StorageReference imageRef = MainActivity.STORAGE.getReference().child(url);
+        final Bitmap[] img = new Bitmap[1];
+        final long ONE_MEGABYTE = 1024 * 1024;
+        imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                img[0] = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                holder.imageView.setImageBitmap(img[0]);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Log.e("error", "error dl Image");
+            }
+        });
     }
 }

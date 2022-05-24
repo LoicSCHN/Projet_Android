@@ -1,5 +1,7 @@
 package com.example.ventevehiculev1.models;
 
+import java.util.ArrayList;
+
 public class Annonce {
     /*
     private int id;
@@ -12,17 +14,25 @@ public class Annonce {
     private String title;
     private String id_proprietaire;
     private Voiture voiture;
+    private ArrayList<String> photo;
 
-    public Annonce(String id,String title,String id_proprietaire,Voiture voiture){
+    public Annonce(String id,String title,String id_proprietaire,ArrayList<String> photo,Voiture voiture){
         this.id = id;
         this.title=title;
         this.id_proprietaire = id_proprietaire;
+        this.photo = photo;
         this.voiture = voiture;
     }
     public Annonce(){
 
     }
+    public ArrayList<String> getPhoto() {
+        return photo;
+    }
 
+    public void setPhoto(ArrayList<String> photo) {
+        this.photo = photo;
+    }
     public String getId() {
         return id;
     }

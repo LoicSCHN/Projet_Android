@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btn_user;
 
     public static DatabaseReference BDD;
-    //public static FirebaseStorage STORAGE;
+    public static FirebaseStorage STORAGE;
     public static FirebaseAuth AUTH;
 
     /*
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         BDD = FirebaseDatabase.getInstance("https://vente-voiture-ceac9-default-rtdb.europe-west1.firebasedatabase.app").getReference();
+        STORAGE = FirebaseStorage.getInstance("gs://vente-voiture-ceac9.appspot.com/");
         AUTH = FirebaseAuth.getInstance();
 
         btn_user = findViewById(R.id.btnUser);
