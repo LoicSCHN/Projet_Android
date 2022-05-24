@@ -65,7 +65,7 @@ public class MesAnnoncesActivity extends AppCompatActivity {
                 .setQuery(query,Annonce.class)
                 .build();
 
-        adapter = new annonceAdapter(options);
+        //adapter = new annonceAdapter(options);
         recyclerView.setAdapter(adapter);
 
 
