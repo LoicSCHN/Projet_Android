@@ -10,8 +10,9 @@ public class Voiture {
     private String boiteVitesse;
     private String nbPortes;
     private String puissance;
+    private String numero;
 
-    public Voiture(String marque, String modele, String categorie, String energie, String kilometrage, String boiteVitesse, String nbPortes, String puissance) {
+    public Voiture(String marque, String modele, String categorie, String energie, String kilometrage, String boiteVitesse, String nbPortes, String puissance,String numero) {
 
         this.marque = marque;
         this.modele = modele;
@@ -21,6 +22,7 @@ public class Voiture {
         this.boiteVitesse = boiteVitesse;
         this.nbPortes = nbPortes;
         this.puissance = puissance;
+        this.numero = numero;
     }
 
 
@@ -89,5 +91,27 @@ public class Voiture {
 
     public void setModele(String modele) {
         this.modele = modele;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String toString() {
+        return "Voiture{" +
+                "marque='" +  marque +'\'' +
+                ", modele='" + modele + '\'' +
+                "BoiteVitesse='" +  boiteVitesse +'\'' +
+                ", Kilometrage='" + kilometrage + '\'' +
+                "Energie ='" +  energie +'\'' +
+                ", NbPortes ='" + nbPortes + '\'' +
+                "Puissance='" +  puissance +'\'' +
+                ", Categorie ='" + categorie + '\'' +
+                ", Numero ='" + numero + '\'' +
+                '}';
     }
 }

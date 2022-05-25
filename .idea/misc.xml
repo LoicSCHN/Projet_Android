@@ -4,15 +4,21 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/drawable/fav_button.xml" value="0.109" />
+        <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/drawable/ic_baseline_directions_car.xml" value="0.1" />
         <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/drawable/ic_baseline_home.xml" value="0.323" />
+        <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/drawable/ic_baseline_search.xml" value="0.1" />
         <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/drawable/ic_baseline_star.xml" value="0.109" />
         <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/drawable/ic_baseline_star_fill.xml" value="0.109" />
+        <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/activity_add_annonce.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/activity_annonce.xml" value="0.33" />
         <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/activity_favoris.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/activity_profile.xml" value="0.18819655521783182" />
+        <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/form.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/fragment_favoris.xml" value="0.1" />
         <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/fragment_search.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/Alexandre/Desktop/Projet_Android/app/src/main/res/layout/test.xml" value="0.358695652173913" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/drawable/ic_baseline_email.xml" value="0.193" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/drawable/ic_baseline_favorite_border.xml" value="0.193" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/drawable/ic_baseline_lock.xml" value="0.193" />

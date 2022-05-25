@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -20,13 +20,13 @@
 
                 <EditText
                     android:id="@+id/addDoor"
-                    android:layout_width="223dp"
-                    android:layout_height="46dp"
+                    android:layout_width="207dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="100dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="88dp"
                     android:layout_marginBottom="14dp"
-                    android:text="Nombre de portes" />
+                    android:hint="Nombre de portes" />
 
                 <EditText
                     android:id="@+id/addEnergy"
@@ -36,7 +36,7 @@
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="88dp"
                     android:layout_marginBottom="18dp"
-                    android:text="Energie" />
+                    android:hint="Energie"/>
 
                 <EditText
                     android:id="@+id/addPuissance"
@@ -45,7 +45,7 @@
                     android:layout_marginStart="100dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="88dp"
-                    android:text="Puissance" />
+                    android:hint="Puissance" />
 
                 <EditText
                     android:id="@+id/addKilometrage"
@@ -55,7 +55,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="88dp"
                     android:layout_marginBottom="17dp"
-                    android:text="Kilometrage" />
+                    android:hint="Kilométrage" />
 
                 <EditText
                     android:id="@+id/addVitess"
@@ -65,7 +65,7 @@
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="88dp"
                     android:layout_marginBottom="1dp"
-                    android:text="Boite de Vitesse" />
+                    android:hint="Boite de vitesse"/>
 
                 <EditText
                     android:id="@+id/addTitletoAnnonce"
@@ -77,7 +77,7 @@
                     android:layout_marginBottom="19dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Name" />
+                   android:hint="Titre de l'annonce" />
 
                 <EditText
                     android:id="@+id/addCategory"
@@ -87,7 +87,7 @@
                     android:layout_marginTop="1dp"
                     android:layout_marginEnd="88dp"
                     android:layout_marginBottom="5dp"
-                    android:text="Categorie" />
+                    android:hint="Catégorie" />
 
                 <EditText
                     android:id="@+id/addModeleToAnnonce"
@@ -97,7 +97,7 @@
                     android:layout_marginTop="7dp"
                     android:layout_marginEnd="88dp"
                     android:layout_marginBottom="6dp"
-                    android:text="Modele" />
+                    android:hint="Modèle" />
 
                 <EditText
                     android:id="@+id/addMarqueToAnnonce"
@@ -107,7 +107,13 @@
                     android:layout_marginTop="19dp"
                     android:layout_marginEnd="93dp"
                     android:layout_marginBottom="17dp"
-                    android:text="Marque" />
+                    android:hint="Marque"/>
+
+                <EditText
+                    android:id="@+id/num_annonce"
+                    android:layout_width="189dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Numero à contacter" />
 
                 <LinearLayout
 
@@ -180,4 +186,4 @@
         </ScrollView>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

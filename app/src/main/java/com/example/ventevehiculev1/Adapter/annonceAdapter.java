@@ -59,6 +59,8 @@ public class annonceAdapter extends FirebaseRecyclerAdapter<Annonce,annonceAdapt
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull Annonce model)
     {
         holder.title.setText(model.getTitle());
+        holder.marque.setText(model.getVoiture().getMarque());
+        holder.modele.setText(model.getVoiture().getModele());
         holder.id = this.getRef(position).getKey();
         dlImageFromFireBaseStorage(holder, model.getPhoto().get(0));
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -98,11 +100,11 @@ public class annonceAdapter extends FirebaseRecyclerAdapter<Annonce,annonceAdapt
                     if(user == null){
                         holder.checkBox.setChecked(false);
                         Toast.makeText(view.getContext(),
-                                "Vous devez être connecté pour mettre en favori une annonce ",
+                                "Vous devez être connecté ",
                                 Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(view.getContext(),
-                                "SUUUUUUUUU ",
+                                "Mis dans les favoris ",
                                 Toast.LENGTH_SHORT).show();
                         String key = MainActivity.BDD.getDatabase().getReference("Favoris").push().getKey();
                         Favori favori = new Favori(user.getUid(), holder.id);
@@ -147,12 +149,16 @@ public class annonceAdapter extends FirebaseRecyclerAdapter<Annonce,annonceAdapt
         private ArrayList<Annonce> mExemple;
         private CheckBox checkBox;
         TextView title;
+        TextView modele;
+        TextView marque;
         String id;
 
         public myViewHolder(@NonNull View itemView)
         {
             super(itemView);
             title = itemView.findViewById(R.id.titleannonce);
+            modele = itemView.findViewById(R.id.modele_annonce_card);
+            marque = itemView.findViewById(R.id.marque_annonce_card);
             id="no";
             imageView = (ImageView) itemView.findViewById(R.id.appercu_imageView);
             checkBox = (CheckBox) itemView.findViewById(R.id.rb_Fav);

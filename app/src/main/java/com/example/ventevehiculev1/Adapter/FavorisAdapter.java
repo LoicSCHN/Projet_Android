@@ -38,8 +38,6 @@ public class FavorisAdapter extends RecyclerView.Adapter<AnnonceViewHolder> {
 
     public FavorisAdapter(ArrayList<Annonce> annonces) {
        this.annonces = annonces;
-        //Log.d("fezdscsdBindVIpqEW", String.valueOf(annonces));
-        //notifyDataSetChanged();
     }
 
     @NonNull

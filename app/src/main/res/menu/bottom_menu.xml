@@ -14,7 +14,7 @@
     <item
         android:id="@+id/FavLayout"
         android:title="@string/favoris"
-        android:icon="@drawable/ic_baseline_favorite_border"
+        android:icon="@drawable/ic_baseline_star"
         />
     <item
         android:id="@+id/SearchLayout"

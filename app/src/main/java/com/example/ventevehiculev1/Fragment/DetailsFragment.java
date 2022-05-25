@@ -89,7 +89,7 @@ public class DetailsFragment extends Fragment {
                         @Override
                         public void onClick(View view) {
                             Annonce a = task.getResult().getValue(Annonce.class);
-                            String number = a.getTitle();
+                            String number = a.getVoiture().getNumero();
                             Intent intent = new Intent(v.getContext(), ContactActivity.class);
                             intent.putExtra("number",number);
                             Toast.makeText(v.getContext(), number+"ici", Toast.LENGTH_SHORT).show();

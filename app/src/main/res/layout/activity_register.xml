@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2148C0"
+    android:background="#ffff"
     tools:context=".RegisterActivity">
 
 
@@ -17,8 +17,8 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="108dp"
         android:fontFamily="@font/montserrat_medium"
-        android:text="@string/welcome"
-        android:textColor="@color/white"
+        android:text="Bienvenue sur notre APP"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
         android:layout_marginTop="31dp"
         android:layout_marginEnd="236dp"
         android:text="Créer mon compte :"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -19,7 +19,7 @@ public class AnnonceViewHolder extends RecyclerView.ViewHolder{
     private View.OnClickListener onItemClickListener;
 
 
-    public TextView title, dscrptTct, pos;
+    public TextView title;
     public ImageView imageView;
     public String id;
     public CheckBox checkBox;
@@ -28,7 +28,6 @@ public class AnnonceViewHolder extends RecyclerView.ViewHolder{
     public AnnonceViewHolder(View itemView) {
         super(itemView);
         title=(TextView) itemView.findViewById(R.id.titleannonce);
-        pos =  (TextView) itemView.findViewById(R.id.position_annonce_card);
         imageView = (ImageView) itemView.findViewById(R.id.appercu_imageView);
         id = "no";
         checkBox = (CheckBox) itemView.findViewById(R.id.rb_Fav);

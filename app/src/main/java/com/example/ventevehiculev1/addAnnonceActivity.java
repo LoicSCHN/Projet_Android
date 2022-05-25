@@ -54,6 +54,7 @@ public class addAnnonceActivity extends AppCompatActivity {
     private EditText btv_add;
     private EditText nbp_add;
     private EditText energie_add;
+    private EditText numero_add;
     private String id;
     Activity activity;
     ImageView imageViewSelected;
@@ -67,7 +68,6 @@ public class addAnnonceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_annonce);
-        checkIfAbo();
 
         id = getIntent().getStringExtra("idAnnonce");
         if (id != null) {
@@ -109,6 +109,7 @@ public class addAnnonceActivity extends AppCompatActivity {
         btv_add = findViewById(R.id.addVitess);
         nbp_add = findViewById(R.id.addDoor);
         energie_add = findViewById(R.id.addEnergy);
+        numero_add = findViewById(R.id.num_annonce);
         activity = this;
 
         btn_addannonce = findViewById(R.id.btn_addannonce);
@@ -176,12 +177,13 @@ public class addAnnonceActivity extends AppCompatActivity {
                     String btv = btv_add.getText().toString().trim();
                     String nbp = nbp_add.getText().toString().trim();
                     String energie = energie_add.getText().toString().trim();
+                    String numero = numero_add.getText().toString().trim();
 
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                     if (!TextUtils.isEmpty(title)) {
                         String id = databaseAnnonce.push().getKey();
-                        Voiture voiture = new Voiture(marque, modele, categorie, energie, kilometrage, btv, nbp, puissance);
+                        Voiture voiture = new Voiture(marque, modele, categorie, energie, kilometrage, btv, nbp, puissance,numero);
                         Annonce annonce = new Annonce(id, title, user.getUid(),photos, voiture);
                         databaseAnnonce.child(id).setValue(annonce);
                         //databaseAnnonce.push();
@@ -203,8 +205,8 @@ public class addAnnonceActivity extends AppCompatActivity {
                     key = id;
                     // FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    //Voiture voiture = new Voiture(marque_add.getText(), modele_add.getText(), categorie_add.getText(), energie_add.getText(), kilometrage_add.getText(), btv_add.getText(), nbp_add.getText(),puissance_add.getText());
-                    Voiture voiture = new Voiture("", "", "", "", "", "", "", "");
+                    Voiture voiture = new Voiture(marque_add.getText().toString(), modele_add.getText().toString(), categorie_add.getText().toString(), energie_add.getText().toString(), kilometrage_add.getText().toString(), btv_add.getText().toString(), nbp_add.getText().toString(),puissance_add.getText().toString(),numero_add.getText().toString());
+                    //Voiture voiture = new Voiture(marque_add.getText().toString(), modele_add.getText().toString(), categorie_add.getText().toString(), "", "", "", "", "");
                     Annonce annonce = new Annonce(key, title_add.getText().toString(), user.getUid(),photos, voiture);
                     MainActivity.BDD.child("Annonce").child(key).setValue(annonce);
                     activity.finish();
@@ -219,32 +221,6 @@ public class addAnnonceActivity extends AppCompatActivity {
     }
 
 
-
-    public void checkIfAbo(){
-        FirebaseUser user = MainActivity.AUTH.getCurrentUser();
-        MainActivity.BDD.child("User").child(user.getUid()).get().addOnCompleteListener(
-                new OnCompleteListener<DataSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DataSnapshot> task) {
-
-                        if (!task.isSuccessful()) {
-                            Log.e("FIREBASE", "ERREUR", task.getException());
-                            title_add.setText("dqsdfsdfsddfsd");
-                        }
-                        else {
-                            Log.d("FIREBASE", String.valueOf(task.getResult().getValue()));
-                            User u = task.getResult().getValue(User.class);
-                            title_add.setText((String.valueOf(task.getResult().getValue())));
-                        }
-                        /*if (u.isAbo() == true){
-                            findViewById(R.id.image3).setVisibility(View.INVISIBLE);
-                            findViewById(R.id.image4).setVisibility(View.INVISIBLE);
-                        }*/
-
-                    }
-                }
-        );
-    }
 
     public void storageImage(ImageView imageView, String nom, String key){
         // Get the data from an ImageView as bytes

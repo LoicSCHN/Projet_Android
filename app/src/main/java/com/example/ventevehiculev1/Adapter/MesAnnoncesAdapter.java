@@ -48,14 +48,16 @@ public class MesAnnoncesAdapter extends FirebaseRecyclerAdapter<Annonce,MesAnnon
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull Annonce model)
     {
         holder.title.setText(model.getTitle());
+        holder.marque.setText(model.getVoiture().getMarque());
+        holder.modele.setText(model.getVoiture().getModele());
         holder.id = this.getRef(position).getKey();
 
         holder.view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 new AlertDialog.Builder(v.getContext())
-                        .setTitle("Modification sur l'annonce")
-                        .setMessage("Choisissez la modification à faire")
+                        .setTitle("Modifier l'annonce")
+                        .setMessage("Que souhaitez-vous faire?")
                         .setPositiveButton("Suppression", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 MainActivity.BDD.child("Annonce").child(model.getId()).removeValue();
@@ -93,6 +95,8 @@ public class MesAnnoncesAdapter extends FirebaseRecyclerAdapter<Annonce,MesAnnon
         private View.OnClickListener onItemClickerListener;
         private ArrayList<Annonce> mExemple;
         TextView title;
+        TextView modele;
+        TextView marque;
         String id;
         public View view;
 
@@ -100,6 +104,8 @@ public class MesAnnoncesAdapter extends FirebaseRecyclerAdapter<Annonce,MesAnnon
         {
             super(itemView);
             title = itemView.findViewById(R.id.titleannonce);
+            modele = itemView.findViewById(R.id.modele_annonce_card);
+            marque = itemView.findViewById(R.id.marque_annonce_card);
             id="no";
             view = itemView;
 

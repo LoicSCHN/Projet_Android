@@ -72,15 +72,14 @@ public class FavorisFragment extends Fragment {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         query = MainActivity.BDD.getDatabase().getReference()
-                .child("Favoris");
-        query.orderByChild("idUser")
+                .child("Favoris")
+                .orderByChild("idUser")
                 .equalTo(user.getUid());
         query.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 for (DataSnapshot child : task.getResult().getChildren()) {
                     Favori favori = child.getValue(Favori.class);
-                    Log.i("Fav", favori.toString());
 
                     DatabaseReference query2 = MainActivity.BDD.getDatabase().getReference()
                             .child("Annonce")
@@ -115,8 +114,6 @@ public class FavorisFragment extends Fragment {
         }
     }
 
-    // Function to tell the app to stop getting
-    // data from database on stopping of the activity
     @Override public void onStop() {
         super.onStop();
         if (adapter != null) {
