@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="24dp"
             android:text="TextView"
             app:layout_constraintStart_toEndOf="@+id/appercu_imageView"
             app:layout_constraintTop_toBottomOf="@+id/titleannonce" />
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="72dp"
+            android:layout_marginTop="64dp"
             android:text="TextView"
             app:layout_constraintStart_toEndOf="@+id/appercu_imageView"
             app:layout_constraintTop_toBottomOf="@+id/titleannonce" />
@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="36dp"
             android:text="TextView"
             android:textFontWeight="900"
             app:layout_constraintStart_toEndOf="@+id/appercu_imageView"
@@ -50,8 +50,8 @@
 
         <ImageView
             android:id="@+id/appercu_imageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="106dp"
+            android:layout_height="127dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="50dp"

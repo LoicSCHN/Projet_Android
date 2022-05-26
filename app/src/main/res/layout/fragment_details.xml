@@ -100,13 +100,45 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="62dp"
                 android:textSize="24sp" />
+            <TextView
+                android:id="@+id/type_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="62dp"
+                android:textSize="24sp" />
+            <TextView
+                android:id="@+id/prix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="62dp"
+                android:textSize="24sp" />
+            <TextView
+                android:id="@+id/boite_voiture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="62dp"
+                android:textSize="24sp" />
+            <TextView
+                android:id="@+id/nb_portes_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="62dp"
+                android:textSize="24sp" />
+            <TextView
+                android:id="@+id/numero_a_contacter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="62dp"
+                android:textSize="24sp" />
 
             <Button
                 android:id="@+id/btn_contact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="225dp"
+                android:rotationX="4"
                 android:text="Contacter"
+                android:layout_gravity="center_vertical|center_horizontal"
                 android:textColor="@color/white" />
 
         </LinearLayout>

@@ -83,6 +83,11 @@ public class DetailsFragment extends Fragment {
                     TextView marque = v.findViewById(R.id.marque_voiture);
                     TextView modele = v.findViewById(R.id.modele_voiture);
                     TextView kilometrage = v.findViewById(R.id.kilometrage_voiture);
+                    TextView prix = v.findViewById(R.id.prix);
+                    TextView type = v.findViewById(R.id.type_details);
+                    TextView boite = v.findViewById(R.id.boite_voiture);
+                    TextView nbPortes = v.findViewById(R.id.nb_portes_details);
+                    TextView numero = v.findViewById(R.id.numero_a_contacter);
 
                     Annonce a = task.getResult().getValue(Annonce.class);
                     title.setText(a.getTitle());
@@ -90,6 +95,11 @@ public class DetailsFragment extends Fragment {
                     marque.setText((a.getVoiture().getMarque()));
                     modele.setText(a.getVoiture().getModele());
                     kilometrage.setText(a.getVoiture().getKilometrage());
+                    prix.setText(a.getPrix());
+                    type.setText(a.getType());
+                    boite.setText(a.getVoiture().getBoiteVitesse());
+                    nbPortes.setText(a.getVoiture().getNbPortes());
+                    numero.setText(a.getVoiture().getNumero());
 
                     for (String s : a.getPhoto()) {
                         switch (s.split("/")[1]) {
