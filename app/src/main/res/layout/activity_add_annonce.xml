@@ -113,11 +113,13 @@
                     android:id="@+id/prix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
                     android:ems="10"
-                    android:inputType="number"
-                    android:hint="Prix"/>
+                    android:hint="Prix"
+                    android:inputType="number" />
 
                 <RadioGroup
+                    android:layout_gravity="center_vertical|center_horizontal"
                     android:id="@+id/radioGroup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -127,6 +129,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/lastName_reg">
 
                     <RadioButton
+
                         android:id="@+id/Location"
                         android:layout_width="219dp"
                         android:layout_height="wrap_content"
@@ -143,8 +146,9 @@
                 </RadioGroup>
 
                 <EditText
+
                     android:id="@+id/num_annonce"
-                    android:layout_width="189dp"
+                    android:layout_width="391dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="19dp"
                     android:layout_marginEnd="93dp"
@@ -208,6 +212,7 @@
                 </LinearLayout>
 
                 <Button
+                    android:layout_gravity="center_vertical|center_horizontal"
                     android:id="@+id/btn_addannonce"
                     android:layout_width="161dp"
                     android:layout_height="51dp"
