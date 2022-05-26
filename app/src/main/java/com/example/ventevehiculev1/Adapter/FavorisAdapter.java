@@ -1,5 +1,7 @@
 package com.example.ventevehiculev1.Adapter;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,8 @@ import com.example.ventevehiculev1.R;
 import com.example.ventevehiculev1.models.Annonce;
 import com.example.ventevehiculev1.models.Favori;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,6 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -55,6 +60,7 @@ public class FavorisAdapter extends RecyclerView.Adapter<AnnonceViewHolder> {
 
         holder.title.setText(annonces.get(position).getTitle());
         holder.id = annonces.get(position).getId();
+        dlImageFromFireBaseStorage(holder, annonces.get(position).getPhoto().get(0));
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         MainActivity.BDD.getDatabase().getReference("Favoris").orderByChild("id").equalTo(user.getUid()+";"+holder.id).get().addOnCompleteListener(
@@ -92,7 +98,7 @@ public class FavorisAdapter extends RecyclerView.Adapter<AnnonceViewHolder> {
                     if(user == null){
                         holder.checkBox.setChecked(false);
                         Toast.makeText(view.getContext(),
-                                "Vous devez être connecté pour mettre en favori une annonce ",
+                                "Vous devez être connecté pour mettre en favoris une annonce ",
                                 Toast.LENGTH_SHORT).show();
                     }else{
                         String key = BDD.getDatabase().getReference("Favoris").push().getKey();
@@ -116,6 +122,23 @@ public class FavorisAdapter extends RecyclerView.Adapter<AnnonceViewHolder> {
                                 }
                             });
                 }
+            }
+        });
+    }
+    private void dlImageFromFireBaseStorage(AnnonceViewHolder holder, String url){
+        StorageReference imageRef = MainActivity.STORAGE.getReference().child(url);
+        final Bitmap[] img = new Bitmap[1];
+        final long ONE_MEGABYTE = 1024 * 1024;
+        imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                img[0] = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                holder.imageView.setImageBitmap(img[0]);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Log.e("error", "error dl Image");
             }
         });
     }
