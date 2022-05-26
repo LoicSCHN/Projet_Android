@@ -16,9 +16,6 @@
             android:name=".MesAnnoncesActivity"
             android:exported="false" />
         <activity
-            android:name=".addAnnonce"
-            android:exported="false" />
-        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity

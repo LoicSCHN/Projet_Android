@@ -15,7 +15,7 @@
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/drawable/ic_baseline_pan_tool.xml" value="0.193" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/drawable/ic_baseline_person.xml" value="0.193" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/drawable/ic_baseline_search.xml" value="0.193" />
-        <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_add_annonce.xml" value="0.536" />
+        <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_add_annonce.xml" value="0.40033361134278567" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_annonce.xml" value="0.25" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_favoris.xml" value="0.25" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_login.xml" value="0.264" />
@@ -24,12 +24,14 @@
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_profile.xml" value="0.25" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_register.xml" value="0.4" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/activity_search.xml" value="0.25" />
+        <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/fragment_details.xml" value="0.25" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/fragment_favoris.xml" value="0.25" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/fragment_login.xml" value="0.44106463878326996" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/fragment_mes_annonces.xml" value="0.25" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/layout/fragment_search.xml" value="0.4" />
+        <entry key="..\:/Users/loicc/Documents/Master/S8/Tps-Android/Projet/Projet_Android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2555" />
       </map>
     </option>
   </component>

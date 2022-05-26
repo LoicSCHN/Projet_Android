@@ -2,6 +2,8 @@ package com.example.ventevehiculev1.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,9 +24,12 @@ import com.example.ventevehiculev1.MainActivity;
 import com.example.ventevehiculev1.R;
 import com.example.ventevehiculev1.models.Annonce;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.Query;
+import com.google.firebase.storage.StorageReference;
 
 import org.w3c.dom.Text;
 
@@ -85,6 +91,23 @@ public class DetailsFragment extends Fragment {
                     modele.setText(a.getVoiture().getModele());
                     kilometrage.setText(a.getVoiture().getKilometrage());
 
+                    for (String s : a.getPhoto()) {
+                        switch (s.split("/")[1]) {
+                            case "image1.png":
+                                dlImageFromFireBaseStorage(v.findViewById(R.id.image1), s);
+                                break;
+                            case "image2.png":
+                                dlImageFromFireBaseStorage(v.findViewById(R.id.image2), s);
+                                break;
+                            case "image3.png":
+                                dlImageFromFireBaseStorage(v.findViewById(R.id.image3), s);
+                                break;
+                            case "image4.png":
+                                dlImageFromFireBaseStorage(v.findViewById(R.id.image4), s);
+                                break;
+                        }
+                    }
+
                     button_contact.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -104,5 +127,23 @@ public class DetailsFragment extends Fragment {
 
 
         return v;
+    }
+    private void dlImageFromFireBaseStorage(ImageView imageView, String url){
+        StorageReference imageRef = MainActivity.STORAGE.getReference().child(url);
+        final Bitmap[] img = new Bitmap[1];
+        final long ONE_MEGABYTE = 1024 * 1024;
+        imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                img[0] = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                imageView.setImageBitmap(img[0]);
+                imageView.setBackground(null);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Log.e("error", "error dl Image");
+            }
+        });
     }
 }

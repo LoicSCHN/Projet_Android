@@ -15,6 +15,8 @@ public class Annonce {
     private String id_proprietaire;
     private Voiture voiture;
     private ArrayList<String> photo;
+    private String type;
+    private double prix;
 
     public Annonce(String id,String title,String id_proprietaire,ArrayList<String> photo,Voiture voiture){
         this.id = id;
