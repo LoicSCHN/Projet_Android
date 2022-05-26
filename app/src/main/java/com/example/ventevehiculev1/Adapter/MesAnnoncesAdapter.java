@@ -5,10 +5,14 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,10 +32,13 @@ import com.example.ventevehiculev1.models.Annonce;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -51,6 +58,7 @@ public class MesAnnoncesAdapter extends FirebaseRecyclerAdapter<Annonce,MesAnnon
         holder.marque.setText(model.getVoiture().getMarque());
         holder.modele.setText(model.getVoiture().getModele());
         holder.id = this.getRef(position).getKey();
+        dlImageFromFireBaseStorage(holder, model.getPhoto().get(0));
 
         holder.view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -92,6 +100,7 @@ public class MesAnnoncesAdapter extends FirebaseRecyclerAdapter<Annonce,MesAnnon
 
     public static class myViewHolder extends RecyclerView.ViewHolder
     {
+        public ImageView imageView;
         private View.OnClickListener onItemClickerListener;
         private ArrayList<Annonce> mExemple;
         TextView title;
@@ -107,6 +116,7 @@ public class MesAnnoncesAdapter extends FirebaseRecyclerAdapter<Annonce,MesAnnon
             modele = itemView.findViewById(R.id.modele_annonce_card);
             marque = itemView.findViewById(R.id.marque_annonce_card);
             id="no";
+            imageView = (ImageView) itemView.findViewById(R.id.appercu_imageView);
             view = itemView;
 
             itemView.setTag(this);
@@ -125,5 +135,23 @@ public class MesAnnoncesAdapter extends FirebaseRecyclerAdapter<Annonce,MesAnnon
             });
 
         }
+    }
+
+    private void dlImageFromFireBaseStorage(MesAnnoncesAdapter.myViewHolder holder, String url){
+        StorageReference imageRef = MainActivity.STORAGE.getReference().child(url);
+        final Bitmap[] img = new Bitmap[1];
+        final long ONE_MEGABYTE = 1024 * 1024;
+        imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                img[0] = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                holder.imageView.setImageBitmap(img[0]);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Log.e("error", "error dl Image");
+            }
+        });
     }
 }
