@@ -83,6 +83,17 @@ public class addAnnonceActivity extends AppCompatActivity {
                     Annonce annonce = task.getResult().getValue(Annonce.class);
 
                     ((EditText) findViewById(R.id.nb_port)).setText(annonce.getTitle());
+                    ((EditText) findViewById(R.id.addMarqueToAnnonce)).setText(annonce.getVoiture().getMarque());
+                    ((EditText) findViewById(R.id.addModeleToAnnonce)).setText(annonce.getVoiture().getModele());
+                    ((EditText) findViewById(R.id.addVitess)).setText(annonce.getVoiture().getBoiteVitesse());
+                    ((EditText) findViewById(R.id.addCategory)).setText(annonce.getVoiture().getCategorie());
+                    ((EditText) findViewById(R.id.addPuissance)).setText(annonce.getVoiture().getPuissance());
+                    ((EditText) findViewById(R.id.addKilometrage)).setText(annonce.getVoiture().getKilometrage());
+                    ((EditText) findViewById(R.id.addEnergy)).setText(annonce.getVoiture().getEnergie());
+                    ((EditText) findViewById(R.id.num_annonce)).setText(annonce.getVoiture().getNumero());
+                    ((EditText) findViewById(R.id.prix)).setText(annonce.getPrix());
+                    ((RadioGroup) findViewById(R.id.radioGroup)).setText(annonce.getType());
+
                     for (String s : annonce.getPhoto()) {
                         switch (s.split("/")[1]) {
                             case "image1.png":
