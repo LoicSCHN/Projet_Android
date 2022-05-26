@@ -22,10 +22,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.ventevehiculev1.models.Annonce;
-import com.example.ventevehiculev1.models.User;
 import com.example.ventevehiculev1.models.Voiture;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -55,7 +56,10 @@ public class addAnnonceActivity extends AppCompatActivity {
     private EditText nbp_add;
     private EditText energie_add;
     private EditText numero_add;
+    private EditText prix;
+    private RadioGroup groupRadio;
     private String id;
+    String type;
     Activity activity;
     ImageView imageViewSelected;
     ArrayList<String> photos;
@@ -78,7 +82,7 @@ public class addAnnonceActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<DataSnapshot> task) {
                     Annonce annonce = task.getResult().getValue(Annonce.class);
 
-                    ((EditText) findViewById(R.id.addTitletoAnnonce)).setText(annonce.getTitle());
+                    ((EditText) findViewById(R.id.nb_port)).setText(annonce.getTitle());
                     for (String s : annonce.getPhoto()) {
                         switch (s.split("/")[1]) {
                             case "image1.png":
@@ -100,16 +104,18 @@ public class addAnnonceActivity extends AppCompatActivity {
         }
 
 
-        title_add = findViewById(R.id.addTitletoAnnonce);
+        title_add = findViewById(R.id.nb_port);
         marque_add = findViewById(R.id.addMarqueToAnnonce);
         modele_add = findViewById(R.id.addModeleToAnnonce);
         categorie_add = findViewById(R.id.addCategory);
         puissance_add = findViewById(R.id.addPuissance);
         kilometrage_add = findViewById(R.id.addKilometrage);
         btv_add = findViewById(R.id.addVitess);
-        nbp_add = findViewById(R.id.addDoor);
+        nbp_add = findViewById(R.id.nb_port);
         energie_add = findViewById(R.id.addEnergy);
         numero_add = findViewById(R.id.num_annonce);
+        groupRadio = findViewById(R.id.radioGroup);
+        prix = findViewById(R.id.prix);
         activity = this;
 
         btn_addannonce = findViewById(R.id.btn_addannonce);
@@ -178,13 +184,16 @@ public class addAnnonceActivity extends AppCompatActivity {
                     String nbp = nbp_add.getText().toString().trim();
                     String energie = energie_add.getText().toString().trim();
                     String numero = numero_add.getText().toString().trim();
+                    String Aprix = prix.getText().toString().trim();
+                    boolean isLoc;
 
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
                     if (!TextUtils.isEmpty(title)) {
                         String id = databaseAnnonce.push().getKey();
+
                         Voiture voiture = new Voiture(marque, modele, categorie, energie, kilometrage, btv, nbp, puissance,numero);
-                        Annonce annonce = new Annonce(id, title, user.getUid(),photos, voiture);
+                        Annonce annonce = new Annonce(id, title, user.getUid(),photos, voiture, type, Aprix);
                         databaseAnnonce.child(id).setValue(annonce);
                         //databaseAnnonce.push();
                         //Toast.makeText(this, "Annonce add", Toast.LENGTH_LONG).show();
@@ -206,8 +215,15 @@ public class addAnnonceActivity extends AppCompatActivity {
                     // FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     Voiture voiture = new Voiture(marque_add.getText().toString(), modele_add.getText().toString(), categorie_add.getText().toString(), energie_add.getText().toString(), kilometrage_add.getText().toString(), btv_add.getText().toString(), nbp_add.getText().toString(),puissance_add.getText().toString(),numero_add.getText().toString());
-                    //Voiture voiture = new Voiture(marque_add.getText().toString(), modele_add.getText().toString(), categorie_add.getText().toString(), "", "", "", "", "");
-                    Annonce annonce = new Annonce(key, title_add.getText().toString(), user.getUid(),photos, voiture);
+                    Annonce annonce = new Annonce(key, title_add.getText().toString(), user.getUid(),photos, voiture, type, prix.getText().toString());
+                    if(((ImageView) findViewById(R.id.image1)).getDrawable() != null)
+                        storageImage(findViewById(R.id.image1), "image1", id);
+                    if(((ImageView) findViewById(R.id.image2)).getDrawable() != null)
+                        storageImage(findViewById(R.id.image2), "image2", id);
+                    if(((ImageView) findViewById(R.id.image3)).getDrawable() != null)
+                        storageImage(findViewById(R.id.image3), "image3", id);
+                    if(((ImageView) findViewById(R.id.image4)).getDrawable() != null)
+                        storageImage(findViewById(R.id.image4), "image4", id);
                     MainActivity.BDD.child("Annonce").child(key).setValue(annonce);
                     activity.finish();
                 }
@@ -286,5 +302,21 @@ public class addAnnonceActivity extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         frameLayout.addView(inflater.inflate(fragment, null));
 
+    }
+
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.Location:
+                if (checked)
+                    type = "location";
+                break;
+            case R.id.vente:
+                if (checked)
+                    type = "vente";
+                break;
+        }
     }
 }
